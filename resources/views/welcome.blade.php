@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>austapplication</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -21,7 +21,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 100px;
             }
 
             .flex-center {
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #A02E16;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -59,7 +59,16 @@
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                /*margin-bottom: 120px;*/
+                color:#A02E16;
+            }
+            .app_guideline{
+                width: 980px;
+                height: auto;
+                border: 0.5px solid #A02E16;
+                margin: auto;
+                padding-left: 20px;
+                padding-top: 20px;
             }
         </style>
     </head>
@@ -85,5 +94,21 @@
                 </div>
             </div>
         </div>
+    <div class = "app_guideline">
+        <p>welcome to AUST Application System</p>
+        <p> This page provides you with the basic information you would need for your application
+        We strongly recommend that you have the following information ready as at your time of application</p>
+        <ul>
+            <li><b>Statement of purpose:</b> You are expected to provide a one page summary of your reason for selecting the course for which
+            you are applying for. You should include your interest and experience in this subject area, your reason for choosing the particular
+            course and AUST, your aim/career plan and how the course of study connects your future plan</li>
+            <li> Statement of Results</li>
+            <li>Academic Transcript</li>
+            <li>Passport photograph: It must not be more than 1MB and must be in jpg or jpeg format</li>
+            <li>Research Proposal: for PhD candidates only</li>
+            <li>Atleast 2 Reference </li>
+        </ul>
+
+    </div>
     </body>
 </html>
