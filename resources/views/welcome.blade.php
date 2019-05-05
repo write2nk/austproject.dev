@@ -5,72 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
         <title>{{ config('app.name', 'Application Login') }}</title>
-
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100px;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #A02E16;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                /*margin-bottom: 120px;*/
-                color:#A02E16;
-            }
-            .app_guideline{
-                width: 980px;
-                height: auto;
-                border: 0.5px solid #A02E16;
-                margin: auto;
-                padding-left: 20px;
-                padding-top: 20px;
-            }
-        </style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         {{--<div class="flex-center position-ref full-height">--}}
@@ -111,9 +54,15 @@
             {{--</ul>--}}
     {{----}}
         {{--</div>--}}
-        <div class="flex-center position-ref full-height">
-            <img src="{{ asset('images/aust-logo.png') }}" alt="">
-            <span>ADMISSIONS</span>
+        <div class="container">
+            
+            <div class="flex items-center h-32">
+                <img src="{{ asset('images/aust-logo.png') }}" alt="AUST Logo">
+                <img src="{{ asset('images/vertical_bar.png') }}" alt="Vertical Bar" class="w-2 h-16">
+                <span class="text-5xl font-black text-red-dark ml-5">ADMISSIONS</span>
+            </div>
+            
+            
         </div>
     </body>
 </html>
