@@ -7,7 +7,8 @@
         <title>{{ config('app.name', 'Application Login') }}</title>
         
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
         
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
@@ -19,27 +20,12 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="">
-        {{--<div class="flex-center position-ref full-height">--}}
-            {{--@if (Route::has('login'))--}}
-                {{--<div class="top-right links">--}}
-                    {{--@auth--}}
-                        {{--<a href="{{ url('/home') }}">Home</a>--}}
-                    {{--@else--}}
-                        {{--<a href="{{ route('login') }}">Login</a>--}}
-
-                        {{--@if (Route::has('register'))--}}
-                            {{--<a href="{{ route('register') }}">Register</a>--}}
-                        {{--@endif--}}
-                    {{--@endauth--}}
-                {{--</div>--}}
-            {{--@endif--}}
-        {{--</div>--}}
         <div class="container">
             <!-- Header -->
             <div class="flex items-center h-32">
                 <img src="{{ asset('images/aust-logo.png') }}" alt="AUST Logo">
                 <img src="{{ asset('images/v_bar.png') }}" alt="Vertical Bar" class="w-2 h-16">
-                <span class="text-5xl font-black text-red-dark ml-5">ADMISSIONS</span>
+                <span class="text-4xl font-black text-red-dark ml-5">ADMISSIONS</span>
             </div>
     
             <div class="mt-10">
@@ -67,7 +53,6 @@
                 
                 <div class="flex item-center justify-center mb-10">
                     <a class="no-underline" href="{{ route('login') }}">Login</a>
-    
                     <a class="no-underline ml-5" href="{{ route('register') }}">Create Account</a>
                 </div>
             </div>
