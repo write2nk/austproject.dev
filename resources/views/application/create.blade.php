@@ -4,7 +4,7 @@
     <form action="" method = "">
         <fieldset>
             <legend> Personal Details</legend>
-      First Name*: <input type="text" name = "firstname" ><br>
+      First Name*: <input type="text" name = "firstname" required><br>
             Middle Name: <input type = "text" name = "middlename"><br>
         Last Name*: <input type = "text" name = "lastname"><br>
             Gender*: <input type="radio" name = "gender" value=" male"> Male
@@ -90,6 +90,7 @@
                 <option value ="pleaseselect">Theoretical & Applied Phyics</option>
             </select>
         </fieldset>
+
         <fieldset>
             <legend>Referee Information </legend>
           <p>  You are expected to provide atleast two  references. Ensure that the information you enter is correct as
@@ -105,7 +106,16 @@
             Email: <input type="email" name="email"><br>
             Phone number: <input type="text"><br>
             Institution/Organization*: <input type="text" name="institution">
-
         </fieldset>
+        <fieldset>
+            <legend>Declaration</legend>
+            <p> By clicking Agree, I confirm that the information I have provided in this form is true, complete and accurate
+            and no information or other infromation has been omitted</p>
+            <p>I acknowledge that knowing, providing false information gives AUST the right to cancel the application and grounds for
+            dismissal from the University</p>
+            <input type="checkbox" name="aggree"> I agree
+        </fieldset>
+
+        <input type="submit" name ="submit">
     </form>
 @endsection
