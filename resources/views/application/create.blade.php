@@ -2,128 +2,214 @@
 
 @section('content')
 <div class="flex flex-col items-center">
-<form class="w-full max-w-md" action="">
-    <div class="flex flex-wrap -mx-3 mb-6">
-
-        <!-- Last Name -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="lastname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-                Last Name <span class="text-red">*</span>
-            </label>
-
-            <input type="text" name = "lastname" idrequired class="appearance-none block w-full bg-grey-lighter
-                   text-grey-darker border rounded py-2 px-3 mb-3
-                   leading-tight focus:outline-none focus:bg-white" placeholder="Last Name">
-
-            @error('lastname')
-            <p class="text-red text-xs italic">
-                <strong>{{ $message }}</strong>
-            </p>
-            @enderror
-        </div>
-
-        <!-- First Name -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="firstname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-                First Name <span class="text-red">*</span>
-            </label>
-
-            <input type="text" name = "firstname" required class="appearance-none block w-full bg-grey-lighter
-                   text-grey-darker border rounded py-2 px-3 mb-3
-                   leading-tight focus:outline-none focus:bg-white" placeholder="First Name">
-
-            @error('firstname')
+    <form class="w-full max-w-md" action="">
+        <div class="flex flex-wrap -mx-3 mb-6 border rounded">
+            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+                Personal Details
+            </div>
+            
+            <!-- Last Name -->
+            <div class="w-full px-3 mb-4 md:mb-0">
+                <label for="lastname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Last Name <span class="text-red">*</span>
+                </label>
+    
+                <input type="text" name="lastname" id="lastname" required class="appearance-none block w-full bg-grey-lighter
+                       text-grey-darker border rounded py-3 px-4 mb-3
+                       leading-tight focus:outline-none focus:bg-white" placeholder="Last Name">
+    
+                @error('lastname')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
                 </p>
-            @enderror
-        </div>
-
-        <!-- Middle Name -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="middlename" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Middle Name</label>
-            <input type="text" name = "middlename" required class="appearance-none block w-full bg-grey-lighter
-                   text-grey-darker border rounded py-2 px-3 mb-3
-                   leading-tight focus:outline-none focus:bg-white" placeholder="Middle Name">
-            @error('middlename')
+                @enderror
+            </div>
+    
+            <!-- First Name -->
+            <div class="w-full px-3 mb-4 md:mb-0">
+                <label for="firstname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    First Name <span class="text-red">*</span>
+                </label>
+    
+                <input type="text" name="firstname" id="firstname" required class="appearance-none block w-full bg-grey-lighter
+                       text-grey-darker border rounded py-3 px-4 mb-3
+                       leading-tight focus:outline-none focus:bg-white" placeholder="First Name">
+    
+                @error('firstname')
+                    <p class="text-red text-xs italic">
+                        <strong>{{ $message }}</strong>
+                    </p>
+                @enderror
+            </div>
+    
+            <!-- Middle Name -->
+            <div class="w-full px-3 mb-4 md:mb-0">
+                <label for="middlename" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Middle Name</label>
+                <input type="text" name="middlename" id="middlename" required class="appearance-none block w-full bg-grey-lighter
+                       text-grey-darker border rounded py-3 px-4 mb-3
+                       leading-tight focus:outline-none focus:bg-white" placeholder="Middle Name">
+                @error('middlename')
+                    <p class="text-red text-xs italic">
+                        <strong>{{ $message }}</strong>
+                    </p>
+                @enderror
+            </div>
+    
+            <!-- Gender -->
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <label for="gender" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Gender <span class="text-red">*</span>
+                </label>
+    
+                <div class="relative">
+                    <select name="gender" id="gender" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+    
+                @error('gender')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
                 </p>
-            @enderror
-        </div>
-
-        <!-- Gender -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="gender" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-                Gender <span class="text-red">*</span>
-            </label>
-
-            <div class="relative">
-                <select name="gender" id="gender" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </select>
-                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                </div>
+                @enderror
             </div>
-
-            @error('gender')
-            <p class="text-red text-xs italic">
-                <strong>{{ $message }}</strong>
-            </p>
-            @enderror
-        </div>
-
-        <!-- Marital Status -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="marital_status" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-                Marital Status <span class="text-red">*</span>
-            </label>
-
-            <div class="relative">
-                <select name="marital_status" id="marital_status" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
-                    <option value="1">Single</option>
-                    <option value="2">Married</option>
-                    <option value="3">Divorced</option>
-                </select>
-                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+    
+            <!-- Marital Status -->
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <label for="marital_status" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Marital Status <span class="text-red">*</span>
+                </label>
+    
+                <div class="relative">
+                    <select name="marital_status" id="marital_status" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="1">Single</option>
+                        <option value="2">Married</option>
+                        <option value="3">Divorced</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
                 </div>
+    
+                @error('marital_status')
+                    <p class="text-red text-xs italic">
+                        <strong>{{ $message }}</strong>
+                    </p>
+                @enderror
             </div>
-
-            @error('marital_status')
+    
+            <!-- Date of Birth -->
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <label for="date_of_birth" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Date of Birth <span class="text-red">*</span>
+                </label>
+    
+                <div class="relative">
+                    <select name="date_of_birth" id="date_of_birth" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="1">Single</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+    
+                @error('date_of_birth')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
                 </p>
-            @enderror
-        </div>
-
-        <!-- Date of Birth -->
-        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-            <label for="date_of_birth" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
-                Date of Birth <span class="text-red">*</span>
-            </label>
-
-            <div class="relative">
-                <select name="date_of_birth" id="date_of_birth" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
-                    <option value="1">Single</option>
-                    <option value="2">Married</option>
-                    <option value="3">Divorced</option>
-                </select>
-                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                </div>
+                @enderror
             </div>
-
-            @error('date_of_birth')
-            <p class="text-red text-xs italic">
-                <strong>{{ $message }}</strong>
-            </p>
-            @enderror
+    
+            <!-- Nationality -->
+            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                <label for="nationality" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Nationality <span class="text-red">*</span>
+                </label>
+        
+                <div class="relative">
+                    <select name="nationality" id="nationality" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="NG">Nigeria</option>
+                        <option value="OT">Others</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+        
+                @error('nationality')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+                @enderror
+            </div>
+    
+            <!-- State -->
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <label for="state" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    State (Nigerians only) <span class="text-red">*</span>
+                </label>
+        
+                <div class="relative">
+                    <select name="state" id="state" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="1">Abia</option>
+                        <option value="2">Enugu</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+        
+                @error('state')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+                @enderror
+            </div>
+    
+            <!-- Disability -->
+            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                <label for="disability" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Disability <span class="text-red">*</span>
+                </label>
+    
+                <div class="relative">
+                    <select name="disability" id="disability" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+    
+                @error('disability')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+                @enderror
+            </div>
+    
+            <!-- Disability Details -->
+            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                <label for="disability_details" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">If Yes, Specify Disability</label>
+                <input type="text" name="disability_details" id="disability_details" required class="appearance-none block w-full bg-grey-lighter
+                       text-grey-darker border rounded py-3 px-4 mb-3
+                       leading-tight focus:outline-none focus:bg-white" placeholder="Specify Disability">
+                @error('disability_details')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+                @enderror
+            </div>
+            
         </div>
-    </div>
-</form>
+    </form>
+    
+    
     <form action="" method = "">
         <fieldset>
             <legend> Personal Details</legend>
