@@ -52,8 +52,8 @@
                 </div>
                 
                 <div class="flex item-center justify-center mb-10">
-                    <a class="no-underline" href="{{ route('login') }}">Login</a>
-                    <a class="no-underline ml-5" href="{{ route('register') }}">Create Account</a>
+                    <a class="no-underline block bg-grey px-3 py-2 rounded hover:bg-grey-darker" href="{{ route('login') }}">Login</a>
+                    <a class="no-underline block bg-grey px-3 py-2 rounded hover:bg-grey-darker ml-5" href="{{ route('register') }}">Create Account</a>
                 </div>
             </div>
             

@@ -1,10 +1,133 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="flex flex-col items-center">
+<form class="w-full max-w-md" action="">
+    <div class="flex flex-wrap -mx-3 mb-6">
+
+        <!-- Last Name -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="lastname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Last Name <span class="text-red">*</span>
+            </label>
+
+            <input type="text" name = "lastname" idrequired class="appearance-none block w-full bg-grey-lighter
+                   text-grey-darker border rounded py-2 px-3 mb-3
+                   leading-tight focus:outline-none focus:bg-white" placeholder="Last Name">
+
+            @error('lastname')
+            <p class="text-red text-xs italic">
+                <strong>{{ $message }}</strong>
+            </p>
+            @enderror
+        </div>
+
+        <!-- First Name -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="firstname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                First Name <span class="text-red">*</span>
+            </label>
+
+            <input type="text" name = "firstname" required class="appearance-none block w-full bg-grey-lighter
+                   text-grey-darker border rounded py-2 px-3 mb-3
+                   leading-tight focus:outline-none focus:bg-white" placeholder="First Name">
+
+            @error('firstname')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+            @enderror
+        </div>
+
+        <!-- Middle Name -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="middlename" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Middle Name</label>
+            <input type="text" name = "middlename" required class="appearance-none block w-full bg-grey-lighter
+                   text-grey-darker border rounded py-2 px-3 mb-3
+                   leading-tight focus:outline-none focus:bg-white" placeholder="Middle Name">
+            @error('middlename')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+            @enderror
+        </div>
+
+        <!-- Gender -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="gender" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Gender <span class="text-red">*</span>
+            </label>
+
+            <div class="relative">
+                <select name="gender" id="gender" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+
+            @error('gender')
+            <p class="text-red text-xs italic">
+                <strong>{{ $message }}</strong>
+            </p>
+            @enderror
+        </div>
+
+        <!-- Marital Status -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="marital_status" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Marital Status <span class="text-red">*</span>
+            </label>
+
+            <div class="relative">
+                <select name="marital_status" id="marital_status" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <option value="1">Single</option>
+                    <option value="2">Married</option>
+                    <option value="3">Divorced</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+
+            @error('marital_status')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+            @enderror
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+            <label for="date_of_birth" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Date of Birth <span class="text-red">*</span>
+            </label>
+
+            <div class="relative">
+                <select name="date_of_birth" id="date_of_birth" class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <option value="1">Single</option>
+                    <option value="2">Married</option>
+                    <option value="3">Divorced</option>
+                </select>
+                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+
+            @error('date_of_birth')
+            <p class="text-red text-xs italic">
+                <strong>{{ $message }}</strong>
+            </p>
+            @enderror
+        </div>
+    </div>
+</form>
     <form action="" method = "">
         <fieldset>
             <legend> Personal Details</legend>
-      First Name*: <input type="text" name = "firstname" required><br>
+      First Name*: <br>
             Middle Name: <input type = "text" name = "middlename"><br>
         Last Name*: <input type = "text" name = "lastname"required><br>
             Gender*: <input type="radio" name = "gender" value=" male" required> Male
@@ -125,4 +248,5 @@
         </fieldset>
         <input type="submit" name ="submit" value = "Submit">
     </form>
+</div>
 @endsection
