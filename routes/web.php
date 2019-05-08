@@ -20,5 +20,5 @@ Route::get('application/create', 'ApplicationController@create')->name('applicat
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('home', 'ApplicationController@create')->name('home');
 
