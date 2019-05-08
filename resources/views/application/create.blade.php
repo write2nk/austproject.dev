@@ -703,7 +703,16 @@
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="transcript" id="transcript" required>
             </div>
-    
+
+            <div class="w-full px-3 mb-4 md:mb-0">
+                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                    Reference Leter <span class="text-red">*</span>
+                </label>
+
+                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="rletter" id="rletter" required>
+            </div>
+
+
             <div class="w-full px-3 mb-4 md:mb-0">
                 <label for="proposal" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
                     Research Proposal
