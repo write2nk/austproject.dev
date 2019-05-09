@@ -45,7 +45,8 @@
                         <li>Academic Transcript</li>
                         <li>Passport photograph: It must not be more than 1MB and must be in jpg or jpeg format</li>
                         <li>Research Proposal: for PhD candidates only</li>
-                        <li>Atleast Two Reference </li>
+                        <li>Atleast Two Reference: You are expected to download the reference form from <a href="https://aust.edu.ng/admission/reference-form-for-postgraduate-program">here</a> and then
+                        upload it during your application</li>
                        <li>If you are a returning user, select login to continue</li>
                        <li>If you are first time user, select create account. </li>
                     </ul>
