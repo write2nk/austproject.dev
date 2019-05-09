@@ -1,4 +1,4 @@
-<div>
+<div class="text-center text-sm uppercase font-black text-red-darker">
     @yield('title')
 </div>
 <img src="{{ asset('images/h_bar.png') }}" alt="Vertical Bar" class="h-1 w-full">

@@ -1,14 +1,14 @@
 <nav class="flex items-center justify-center flex-wrap p-6">
-    <div class="flex items-center flex-no-shrink text-white mr-6">
-        <img class="mr-2" src="{{ asset('images/aust-logo.png') }}" alt="AUST Logo">
-        <img src="{{ asset('images/v_bar.png') }}" alt="Vertical Bar" class="w-2 h-16">
-        <span class="text-4xl font-black text-red-dark ml-5">ADMISSIONS</span>
+    <div class="flex flex-col md:flex-row items-center text-white md:mr-6">
+        <img class="md:mr-2" src="{{ asset('images/aust-logo.png') }}" alt="AUST Logo">
+        <img src="{{ asset('images/v_bar.png') }}" alt="Vertical Bar" class="w-2 h-16 hidden md:block">
+        <span class="text-4xl font-black text-red-dark md:ml-5">ADMISSIONS</span>
     </div>
-    <div class="block lg:hidden">
-        <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
-            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-        </button>
-    </div>
+    {{--<div class="block lg:hidden">--}}
+        {{--<button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">--}}
+            {{--<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>--}}
+        {{--</button>--}}
+    {{--</div>--}}
     <!-- Main Menu -->
     {{--<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">--}}
         {{--<div class="text-sm lg:flex-grow">--}}
