@@ -1,4 +1,7 @@
-
+<div>
+    @yield('title')
+</div>
+<img src="{{ asset('images/h_bar.png') }}" alt="Vertical Bar" class="h-1 w-full">
 
 
 {{--<nav class="flex items-center justify-between flex-wrap bg-grey-darkest p-6 fixed w-full z-10 pin-t">--}}

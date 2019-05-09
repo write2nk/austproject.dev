@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Create Account')
+
 @section('content')
     <div class="flex justify-center">
         <div class="w-full max-w-xs">

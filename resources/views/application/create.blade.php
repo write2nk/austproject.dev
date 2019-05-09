@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Admission Form')
+
 @section('content')
 <div class="flex flex-col items-center">
     <form class="w-full max-w-md" action="">
