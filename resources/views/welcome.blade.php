@@ -47,6 +47,16 @@
                         <li>Research Proposal: for PhD candidates only</li>
                         <li>Atleast Two Reference: You are expected to download the reference form from <a href="https://aust.edu.ng/admission/reference-form-for-postgraduate-program">here</a> and then
                         upload it during your application</li>
+                        <li>You are expected to merge and submit all your documents as one file, you can follow this <a href="https://pdfjoiner.com/">Link
+                           </a>  to join your pdf files.</li>
+                        <li>Your documents must be merged in the following order:</li>
+                        <ol type="1">
+                            <li>Passport Photograph</li>
+                            <li>Statement of Results</li>
+                            <li> Academic Transcript</li>
+                            <li>Statement of Purpose</li>
+                            <li> Research proposal (for PhD only) </li>
+                        </ol>
                        <li>If you are a returning user, select login to continue</li>
                        <li>If you are first time user, select create account. </li>
                     </ul>
