@@ -16,6 +16,10 @@
 
  //@tailwind components;
 
+ div.vdp-datepicker > div > input{
+    @apply w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 block appearance-none rounded leading-tight;
+   &:focus{ @apply outline-none bg-white border-grey; }
+ }
 @tailwind utilities;
 
 
