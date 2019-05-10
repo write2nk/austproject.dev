@@ -508,6 +508,32 @@ table {
   border-collapse: collapse;
 }
 
+div.vdp-datepicker > div > input {
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  border-width: 1px;
+  border-color: #f1f5f8;
+  color: #606f7b;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-right: 2rem;
+  margin-bottom: .75rem;
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: .25rem;
+  line-height: 1.25;
+}
+
+div.vdp-datepicker > div > input:focus {
+  outline: 0;
+  background-color: #fff;
+  border-color: #b8c2cc;
+}
+
 .list-reset {
   list-style: none;
   padding: 0;
