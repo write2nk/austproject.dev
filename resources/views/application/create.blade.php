@@ -91,9 +91,9 @@
                 <div class="relative">
                     <select name="marital_status" id="marital_status" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Marital Status</option>
-                        <option value="1">Single</option>
-                        <option value="2">Married</option>
-                        <option value="3">Divorced</option>
+                        @foreach($marital_statuses as $marital)
+                            <option value="{{ $marital->id }}"> {{ $marital->marital_status }} </option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -164,7 +164,7 @@
                     <select name="state" id="state" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select State</option>
                         @foreach($states as $state)
-                            <option value="{{ $state->id }}"> {{ $state->country }} </option>
+                            <option value="{{ $state->id }}"> {{ $state->state }} </option>
                         @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -545,8 +545,11 @@
                 <div class="relative">
                     <select name="stream" id="stream" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Stream</option>
-                        <option value="CSC">Computer Science</option>
-                        <option value="MAT">Mathematics</option>
+                        @foreach($streams as $stream)
+                            <option value="{{ $stream->id }}"> {{ $stream->stream }} </option>
+                        @endforeach
+
+
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
