@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartmentsTable extends Migration
+class CreateStateOfResidencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('department');
+        Schema::create('state_of__residences', function (Blueprint $table) {
+            $table->unsignedInteger('id');
+            $table->string('state_of_residence', 200);
+            $table->string('country_id', 5);
         });
     }
 
@@ -26,6 +27,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('state_of__residences');
     }
 }

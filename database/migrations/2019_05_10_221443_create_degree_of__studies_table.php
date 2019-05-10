@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramsTable extends Migration
+class CreateDegreeOfStudiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('degree_of__studies', function (Blueprint $table) {
             $table->unsignedInteger('id');
-            $table->string('program', 50);
+            $table->string('degree_of_study', 50);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programs');
+        Schema::dropIfExists('degree_of__studies');
     }
 }

@@ -67,8 +67,10 @@
                 <div class="relative">
                     <select name="gender" id="gender" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Gender</option>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
+                        @foreach($genders as $gender)
+                            <option value="{{ $gender->id }}"> {{ $gender->gender }} </option>
+                        @endforeach
+
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -189,8 +191,9 @@
                 <div class="relative">
                     <select name="disability" id="disability" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Disability</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        @foreach($disabilities as $disability)
+                            <option value="{{ $disability->id }}"> {{ $disability->disability }} </option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -285,8 +288,9 @@
                 <div class="relative">
                     <select name="country_of_residence" id="country_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Country of Residence</option>
-                        <option value="NG">Nigeria</option>
-                        <option value="OT">Others</option>
+                        @foreach($country_of_residences as $country_of_residency)
+                            <option value="{{ $country_of_residency->id }}"> {{ $country_of_residency->country_of_residence }} </option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -309,8 +313,9 @@
                 <div class="relative">
                     <select name="state_of_residence" id="state_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select State</option>
-                        <option value="1">Abia</option>
-                        <option value="2">Enugu</option>
+                        @foreach($state_of_residences as $state_of_residence)
+                            <option value="{{ $state_of_residence->id }}"> {{ $state_of_residence->state_of_residence }} </option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -392,9 +397,10 @@
                 <div class="relative">
                     <select name="degree" id="degree" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Degree</option>
-                        <option value="Bachelors">Bachelors</option>
-                        <option value="Masters">Masters</option>
-                        <option value="doctorate">Doctorate</option>
+                        @foreach($degree_of_studies as $degree_of_study)
+                            <option value="{{ $degree_of_study->id }}"> {{ $degree_of_study->degree_of_study }} </option>
+                        @endforeach
+
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -522,8 +528,9 @@
                 <div class="relative">
                     <select name="program" id="program" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Program</option>
-                        <option value="M.Sc">Master of Science</option>
-                        <option value="Ph.D">Doctor of Philosophy</option>
+                        @foreach($programs as $programme)
+                            <option value="{{ $programme->id }}"> {{ $programme->programs }} </option>
+                        @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -581,10 +588,10 @@
                 <div class="relative">
                     <select name="referee_title" id="referee_title" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Title</option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Dr">Dr</option>
-                        <option value="Prof">Prof</option>
+                        @foreach($titles as $title)
+                            <option value="{{ $title->id }}"> {{ $title->title }} </option>
+                        @endforeach
+
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
