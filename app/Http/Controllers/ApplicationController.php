@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\States;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -13,6 +15,9 @@ class ApplicationController extends Controller
 
     public function create()
     {
-        return view('application.create');
+        $countries = Country::all();
+        $states = States::all();
+
+        return view('application.create', compact('countries', 'states'));
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStreamsTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateStreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('streams', function (Blueprint $table) {
-            $table->unsignedInteger('id');
-            $table->string('stream', 200);
+        Schema::create('departments', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('department');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateStreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('streams');
+        Schema::dropIfExists('departments');
     }
 }
