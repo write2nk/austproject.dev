@@ -93,8 +93,8 @@
                 <div class="relative">
                     <select name="marital_status" id="marital_status" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Marital Status</option>
-                        @foreach($marital_statuses as $marital)
-                            <option value="{{ $marital->id }}"> {{ $marital->marital_status }} </option>
+                        @foreach($marital_statuses as $marital_status)
+                            <option value="{{ $marital_status->id }}"> {{ $marital_status->marital_status }} </option>
                         @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -288,8 +288,8 @@
                 <div class="relative">
                     <select name="country_of_residence" id="country_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Country of Residence</option>
-                        @foreach($country_of_residences as $country_of_residency)
-                            <option value="{{ $country_of_residency->id }}"> {{ $country_of_residency->country_of_residence }} </option>
+                        @foreach($countries as $country)
+                            <option value="{{ $country->id }}"> {{ $country->country }} </option>
                         @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -313,8 +313,8 @@
                 <div class="relative">
                     <select name="state_of_residence" id="state_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select State</option>
-                        @foreach($state_of_residences as $state_of_residence)
-                            <option value="{{ $state_of_residence->id }}"> {{ $state_of_residence->state_of_residence }} </option>
+                        @foreach($states as $state)
+                            <option value="{{ $state->id }}"> {{ $state->state }} </option>
                         @endforeach
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
@@ -397,8 +397,8 @@
                 <div class="relative">
                     <select name="degree" id="degree" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
                         <option value="">Select Degree</option>
-                        @foreach($degree_of_studies as $degree_of_study)
-                            <option value="{{ $degree_of_study->id }}"> {{ $degree_of_study->degree_of_study }} </option>
+                        @foreach($degrees as $degree)
+                            <option value="{{ $degree->id }}"> {{ $degree->degree }} </option>
                         @endforeach
 
                     </select>
