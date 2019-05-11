@@ -105,15 +105,7 @@
                     Date of Birth <span class="text-red">*</span>
                 </label>
     
-                <date-picker></date-picker>
-                {{--<div class="relative">--}}
-                    {{--<select name="date_of_birth" id="date_of_birth" class="selects">--}}
-                        {{--<option value="">Select Date of Birth</option>--}}
-                    {{--</select>--}}
-                    {{--<div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">--}}
-                        {{--<svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <date-picker name="date_of_birth" placeholder="Day Month Year" ></date-picker>
     
                 @error('date_of_birth')
                 <p class="text-red text-xs italic">
@@ -691,7 +683,7 @@
         
         <!-- Submit -->
         <div class="flex flex-wrap -mx-3 mb-6 justify-center">
-            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Submit">
+            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Continue">
         </div>
     </form>
 </div>

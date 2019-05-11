@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 
-Route::get('application/create', 'ApplicationController@create')->name('application.start');
+Route::get('application', 'ApplicationController@create')->name('application.create');
+Route::post('application', 'ApplicationController@store')->name('application.store');
 
 Auth::routes();
 
