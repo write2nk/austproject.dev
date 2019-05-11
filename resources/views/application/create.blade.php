@@ -7,19 +7,17 @@
     <form class="w-full max-w-md" action="">
         <!-- Personal Details -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Personal Details
             </div>
             
             <!-- Last Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="lastname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="lastname" class="labels">
                     Last Name <span class="text-red">*</span>
                 </label>
     
-                <input type="text" name="lastname" id="lastname" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Last Name">
+                <input type="text" name="lastname" id="lastname" required class="inputs" placeholder="Last Name">
     
                 @error('lastname')
                 <p class="text-red text-xs italic">
@@ -30,13 +28,11 @@
     
             <!-- First Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="firstname" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="firstname" class="labels">
                     First Name <span class="text-red">*</span>
                 </label>
     
-                <input type="text" name="firstname" id="firstname" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="First Name">
+                <input type="text" name="firstname" id="firstname" required class="inputs" placeholder="First Name">
     
                 @error('firstname')
                     <p class="text-red text-xs italic">
@@ -47,10 +43,8 @@
     
             <!-- Middle Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="middlename" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">Middle Name</label>
-                <input type="text" name="middlename" id="middlename" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Middle Name">
+                <label for="middlename" class="labels">Middle Name</label>
+                <input type="text" name="middlename" id="middlename" required class="inputs" placeholder="Middle Name">
                 @error('middlename')
                     <p class="text-red text-xs italic">
                         <strong>{{ $message }}</strong>
@@ -60,21 +54,19 @@
     
             <!-- Gender -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="gender" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="gender" class="labels">
                     Gender <span class="text-red">*</span>
                 </label>
     
                 <div class="relative">
-                    <select name="gender" id="gender" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="gender" id="gender" class="selects">
                         <option value="">Select Gender</option>
                         @foreach($genders as $gender)
                             <option value="{{ $gender->id }}"> {{ $gender->gender }} </option>
                         @endforeach
 
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
     
                 @error('gender')
@@ -86,20 +78,18 @@
     
             <!-- Marital Status -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="marital_status" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="marital_status" class="labels">
                     Marital Status <span class="text-red">*</span>
                 </label>
     
                 <div class="relative">
-                    <select name="marital_status" id="marital_status" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="marital_status" id="marital_status" class="selects">
                         <option value="">Select Marital Status</option>
                         @foreach($marital_statuses as $marital_status)
                             <option value="{{ $marital_status->id }}"> {{ $marital_status->marital_status }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
     
                 @error('marital_status')
@@ -111,13 +101,13 @@
     
             <!-- Date of Birth -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="date_of_birth" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="date_of_birth" class="labels">
                     Date of Birth <span class="text-red">*</span>
                 </label>
     
                 <date-picker></date-picker>
                 {{--<div class="relative">--}}
-                    {{--<select name="date_of_birth" id="date_of_birth" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">--}}
+                    {{--<select name="date_of_birth" id="date_of_birth" class="selects">--}}
                         {{--<option value="">Select Date of Birth</option>--}}
                     {{--</select>--}}
                     {{--<div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">--}}
@@ -134,20 +124,18 @@
     
             <!-- Nationality -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="nationality" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="nationality" class="labels">
                     Nationality <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="nationality" id="nationality" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="nationality" id="nationality" class="selects">
                         <option value="">Select Nationality</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}"> {{ $country->country }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('nationality')
@@ -159,20 +147,18 @@
     
             <!-- State -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="state" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="state" class="labels">
                     State (Nigerians only) <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="state" id="state" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="state" id="state" class="selects">
                         <option value="">Select State</option>
                         @foreach($states as $state)
                             <option value="{{ $state->id }}"> {{ $state->state }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('state')
@@ -184,20 +170,18 @@
     
             <!-- Disability -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="disability" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="disability" class="labels">
                     Disability <span class="text-red">*</span>
                 </label>
     
                 <div class="relative">
-                    <select name="disability" id="disability" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="disability" id="disability" class="selects">
                         <option value="">Select Disability</option>
                         @foreach($disabilities as $disability)
                             <option value="{{ $disability->id }}"> {{ $disability->disability }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
     
                 @error('disability')
@@ -209,10 +193,8 @@
     
             <!-- Disability Details -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="disability_details" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">If Yes, Specify Disability</label>
-                <input type="text" name="disability_details" id="disability_details" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Specify Disability">
+                <label for="disability_details" class="labels">If Yes, Specify Disability</label>
+                <input type="text" name="disability_details" id="disability_details" required class="inputs" placeholder="Specify Disability">
                 @error('disability_details')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
@@ -224,19 +206,17 @@
         
         <!-- Contact Details -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Contact Details
             </div>
     
             <!-- Email -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="email" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="email" class="labels">
                     Email <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="email" id="email" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="example@gmail.com">
+                <input type="text" name="email" id="email" required class="inputs" placeholder="example@gmail.com">
         
                 @error('email')
                 <p class="text-red text-xs italic">
@@ -247,13 +227,11 @@
     
             <!-- Mobile Number -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="mobile_number" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="mobile_number" class="labels">
                     Mobile Number <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="mobile_number" id="mobile_number" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="+2347031234567">
+                <input type="text" name="mobile_number" id="mobile_number" required class="inputs" placeholder="+2347031234567">
         
                 @error('mobile_number')
                 <p class="text-red text-xs italic">
@@ -264,13 +242,11 @@
     
             <!-- Address -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="address" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="address" class="labels">
                     Address
                 </label>
         
-                <input type="text" name="address" id="address" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Km 10 Airport Road, Galadimawa">
+                <input type="text" name="address" id="address" required class="inputs" placeholder="Km 10 Airport Road, Galadimawa">
         
                 @error('address')
                 <p class="text-red text-xs italic">
@@ -281,20 +257,18 @@
             
             <!-- Country of Residence -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="country_of_residence" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="country_of_residence" class="labels">
                     Country of Residence <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="country_of_residence" id="country_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="country_of_residence" id="country_of_residence" class="selects">
                         <option value="">Select Country of Residence</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}"> {{ $country->country }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('country_of_residence')
@@ -306,20 +280,18 @@
     
             <!-- State of Residence -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="state_of_residence" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="state_of_residence" class="labels">
                     State (Nigerians only) <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="state_of_residence" id="state_of_residence" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="state_of_residence" id="state_of_residence" class="selects">
                         <option value="">Select State</option>
                         @foreach($states as $state)
                             <option value="{{ $state->id }}"> {{ $state->state }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('state_of_residence')
@@ -331,13 +303,11 @@
     
             <!-- City/Town -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="city" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="city" class="labels">
                     City/Town <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="city" id="city" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Accra">
+                <input type="text" name="city" id="city" required class="inputs" placeholder="Accra">
         
                 @error('city')
                 <p class="text-red text-xs italic">
@@ -348,13 +318,11 @@
     
             <!-- Zip Code -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="zip_code" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="zip_code" class="labels">
                     Zip Code
                 </label>
         
-                <input type="text" name="zip_code" id="zip_code" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="90210">
+                <input type="text" name="zip_code" id="zip_code" required class="inputs" placeholder="90210">
         
                 @error('zip_code')
                 <p class="text-red text-xs italic">
@@ -367,19 +335,17 @@
         
         <!-- Educational Background -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Educational History
             </div>
     
             <!-- Institution -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="institution" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="institution" class="labels">
                     Institution and Location <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="institution" id="institution" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="African University of Science and Technology, Abuja">
+                <input type="text" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
         
                 @error('institution')
                 <p class="text-red text-xs italic">
@@ -390,21 +356,19 @@
     
             <!-- Degree -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="degree" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="degree" class="labels">
                     Degree <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="degree" id="degree" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="degree" id="degree" class="selects">
                         <option value="">Select Degree</option>
                         @foreach($degrees as $degree)
                             <option value="{{ $degree->id }}"> {{ $degree->degree }} </option>
                         @endforeach
 
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('degree')
@@ -416,13 +380,11 @@
             
             <!-- Course of Study -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="course_of_study" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="course_of_study" class="labels">
                     Course of Study <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="course_of_study" id="course_of_study" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Computer Science">
+                <input type="text" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
         
                 @error('course_of_study')
                 <p class="text-red text-xs italic">
@@ -433,31 +395,27 @@
     
             <!-- From -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="from_month" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="from_month" class="labels">
                     Start Date <span class="text-red">*</span>
                 </label>
         
                 <div class="flex">
                     <div class="relative">
-                        <select name="from_month" id="from_month" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <select name="from_month" id="from_month" class="selects">
                             <option value="">Select Month</option>
                             <option value="January">January</option>
                             <option value="February">February</option>
                         </select>
-                        <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
+                        <drop-down-svg></drop-down-svg>
                     </div>
         
                     <div class="relative ml-3">
-                        <select name="from_year" id="from_year" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <select name="from_year" id="from_year" class="selects">
                             <option value="">Select Year</option>
                             <option value="2019">2019</option>
                             <option value="2018">2018</option>
                         </select>
-                        <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
+                        <drop-down-svg></drop-down-svg>
                     </div>
                 </div>
         
@@ -470,31 +428,27 @@
     
             <!-- To -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="to_month" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="to_month" class="labels">
                     Graduation Date <span class="text-red">*</span>
                 </label>
         
                 <div class="flex">
                     <div class="relative">
-                        <select name="to_month" id="to_month" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <select name="to_month" id="to_month" class="selects">
                             <option value="">Select Month</option>
                             <option value="January">January</option>
                             <option value="February">February</option>
                         </select>
-                        <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
+                        <drop-down-svg></drop-down-svg>
                     </div>
             
                     <div class="relative ml-3">
-                        <select name="to_year" id="to_year" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                        <select name="to_year" id="to_year" class="selects">
                             <option value="">Select Year</option>
                             <option value="2019">2019</option>
                             <option value="2018">2018</option>
                         </select>
-                        <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
+                        <drop-down-svg></drop-down-svg>
                     </div>
                 </div>
         
@@ -515,26 +469,24 @@
         
         <!-- Program Details -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Program Details
             </div>
     
             <!-- Program -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="program" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="program" class="labels">
                     Program <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="program" id="program" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="program" id="program" class="selects">
                         <option value="">Select Program</option>
                         @foreach($programs as $programme)
                             <option value="{{ $programme->id }}"> {{ $programme->programs }} </option>
                         @endforeach
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('program')
@@ -546,22 +498,19 @@
     
             <!-- Stream -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="stream" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="stream" class="labels">
                     Stream <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="stream" id="stream" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="stream" id="stream" class="selects">
                         <option value="">Select Stream</option>
                         @foreach($streams as $stream)
                             <option value="{{ $stream->id }}"> {{ $stream->stream }} </option>
                         @endforeach
-
-
+                        
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('stream')
@@ -575,27 +524,25 @@
         
         <!-- Referee Information -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Referee Information
             </div>
     
             <!-- Title -->
             <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="referee_title" class="labels">
                     Title <span class="text-red">*</span>
                 </label>
         
                 <div class="relative">
-                    <select name="referee_title" id="referee_title" class="block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey">
+                    <select name="referee_title" id="referee_title" class="selects">
                         <option value="">Select Title</option>
                         @foreach($titles as $title)
                             <option value="{{ $title->id }}"> {{ $title->title }} </option>
                         @endforeach
 
                     </select>
-                    <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
+                    <drop-down-svg></drop-down-svg>
                 </div>
         
                 @error('referee_title')
@@ -607,13 +554,11 @@
     
             <!-- Fullname -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="referee_name" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="referee_name" class="labels">
                     Name <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_name" id="referee_name" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="Full Name">
+                <input type="text" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
         
                 @error('referee_name')
                 <p class="text-red text-xs italic">
@@ -624,13 +569,11 @@
     
             <!-- Email -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="referee_email" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="referee_email" class="labels">
                     Email <span class="text-red">*</span>
                 </label>
         
-                <input type="email" name="referee_email" id="referee_email" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="example@referee.com">
+                <input type="email" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
         
                 @error('referee_email')
                 <p class="text-red text-xs italic">
@@ -641,13 +584,11 @@
     
             <!-- Phone Number -->
             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="referee_phone" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="referee_phone" class="labels">
                     Phone Number <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_phone" id="referee_phone" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="+2347091234567">
+                <input type="text" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
         
                 @error('referee_phone')
                 <p class="text-red text-xs italic">
@@ -658,13 +599,11 @@
     
             <!-- Affiliation -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_affiliation" class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                <label for="referee_affiliation" class="labels">
                     Institution/Organization <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_affiliation" id="referee_affiliation" required class="appearance-none block w-full shadow
-                       text-grey-darker border rounded py-3 px-4 mb-3
-                       leading-tight focus:outline-none focus:bg-white" placeholder="African University of Science and Technology">
+                <input type="text" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
         
                 @error('referee_affiliation')
                 <p class="text-red text-xs italic">
@@ -683,44 +622,44 @@
         
         <!-- Documents -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Documents
             </div>
     
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="referee_title" class="labels">
                     Passport photograph <span class="text-red">*</span>
                 </label>
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="passport" id="passport" required>
             </div>
     
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="referee_title" class="labels">
                     Statement of purpose <span class="text-red">*</span>
                 </label>
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="purpose_statement" id="purpose_statement" required>
             </div>
     
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="referee_title" class="labels">
                     Statement of Results <span class="text-red">*</span>
                 </label>
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="result_statement" id="result_statement" required>
             </div>
     
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="referee_title" class="labels">
                     Academic Transcript <span class="text-red">*</span>
                 </label>
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="transcript" id="transcript" required>
             </div>
 
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="referee_title" class="labels">
                     Reference Leter <span class="text-red">*</span>
                 </label>
 
@@ -728,8 +667,8 @@
             </div>
 
 
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="proposal" class="uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
+                <label for="proposal" class="labels">
                     Research Proposal
                 </label>
                 
@@ -740,7 +679,7 @@
         
         <!-- Declaration -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2">
+            <div class="section-head">
                 Declaration
             </div>
             <div class="block text-justify px-3 py-3 uppercase tracking-wide leading-normal text-xs font-bold">

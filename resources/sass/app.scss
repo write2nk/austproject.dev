@@ -20,6 +20,26 @@
     @apply w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 block appearance-none rounded leading-tight;
    &:focus{ @apply outline-none bg-white  border-grey; }
  }
+
+ .section-head{
+   @apply bg-grey-lighter w-full block uppercase tracking-wide text-xs text-grey-darker font-bold  py-4 px-3 mb-2;
+ }
+
+ .labels{
+   @apply block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2;
+ }
+
+ .inputs{
+   @apply appearance-none block w-full shadow text-grey-darker border rounded py-3 px-4 mb-3
+   leading-tight;
+   &:focus{ @apply outline-none bg-white; }
+ }
+
+ .selects{
+   @apply block appearance-none w-full shadow border border-grey-lighter text-grey-darker py-3 px-4 pr-8 mb-3 rounded leading-tight;
+   &:focus{ @apply outline-none bg-white border-grey; }
+ }
+
 @tailwind utilities;
 
 

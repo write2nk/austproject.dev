@@ -534,6 +534,81 @@ div.vdp-datepicker > div > input:focus {
   border-color: #b8c2cc;
 }
 
+.section-head {
+  background-color: #f1f5f8;
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-size: .75rem;
+  color: #606f7b;
+  font-weight: 700;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  margin-bottom: .5rem;
+}
+
+.labels {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #606f7b;
+  font-size: .75rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.inputs {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: block;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  color: #606f7b;
+  border-width: 1px;
+  border-radius: .25rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: .75rem;
+  line-height: 1.25;
+}
+
+.inputs:focus {
+  outline: 0;
+  background-color: #fff;
+}
+
+.selects {
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+  border-width: 1px;
+  border-color: #f1f5f8;
+  color: #606f7b;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-right: 2rem;
+  margin-bottom: .75rem;
+  border-radius: .25rem;
+  line-height: 1.25;
+}
+
+.selects:focus {
+  outline: 0;
+  background-color: #fff;
+  border-color: #b8c2cc;
+}
+
 .list-reset {
   list-style: none;
   padding: 0;
