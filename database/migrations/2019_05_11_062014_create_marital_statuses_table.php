@@ -14,7 +14,7 @@ class CreateMaritalStatusesTable extends Migration
     public function up()
     {
         Schema::create('marital_statuses', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->integerIncrements('id');
             $table->string('marital_status', 100);
         });
     }

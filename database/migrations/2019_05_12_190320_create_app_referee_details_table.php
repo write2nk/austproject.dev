@@ -15,7 +15,7 @@ class CreateAppRefereeDetailsTable extends Migration
     {
         Schema::create('app_referee_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('applicant_id');
+            $table->unsignedBigInteger('applicant_id');
             $table->unsignedInteger('referee_title_id');
             $table->string('referee_name', 100);
             $table->string('referee_email', 200);
@@ -24,10 +24,10 @@ class CreateAppRefereeDetailsTable extends Migration
             $table->timestamps();
 
             $table->foreign('applicant_id')
-                ->references('app_personal_details')
-                ->on('id')
+                ->references('id')
+                ->on('app_personal_details')
                 ->delete('cascade');
-            $table->foreign('referee_title_id')->references('titles')->on('id');
+            $table->foreign('referee_title_id')->references('id')->on('titles');
         });
     }
 

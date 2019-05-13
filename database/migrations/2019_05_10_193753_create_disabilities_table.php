@@ -14,7 +14,7 @@ class CreateDisabilitiesTable extends Migration
     public function up()
     {
         Schema::create('disabilities', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->integerIncrements('id');
             $table->string('disability', 50);
         });
     }

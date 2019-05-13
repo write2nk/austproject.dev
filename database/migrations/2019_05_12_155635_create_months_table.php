@@ -14,7 +14,7 @@ class CreateMonthsTable extends Migration
     public function up()
     {
         Schema::create('months', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->integerIncrements('id');
             $table->string('months', 50);
         });
     }

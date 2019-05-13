@@ -14,7 +14,7 @@ class CreateDegreesTable extends Migration
     public function up()
     {
         Schema::create('degrees', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            $table->integerIncrements('id');
             $table->string('degree', 200);
         });
     }
