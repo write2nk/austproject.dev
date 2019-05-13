@@ -4,7 +4,18 @@
 
 @section('content')
 <div class="flex flex-col items-center">
-    <form class="w-full max-w-md" action="">
+    <form class="w-full max-w-md" action="{{ route('application.store') }}" method="post">
+        @csrf
+
+        @if ($errors->any())
+            <div class="text-red text-xs italic">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Personal Details -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
@@ -13,13 +24,13 @@
             
             <!-- Last Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="lastname" class="labels">
+                <label for="last_name" class="labels">
                     Last Name <span class="text-red">*</span>
                 </label>
     
-                <input type="text" name="lastname" id="lastname" required class="inputs" placeholder="Last Name">
+                <input type="text" value="{{ old('last_name') }}" name="last_name" id="last_name" required class="inputs" placeholder="Last Name">
     
-                @error('lastname')
+                @error('last_name')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
                 </p>
@@ -28,13 +39,13 @@
     
             <!-- First Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="firstname" class="labels">
+                <label for="first_name" class="labels">
                     First Name <span class="text-red">*</span>
                 </label>
     
-                <input type="text" name="firstname" id="firstname" required class="inputs" placeholder="First Name">
+                <input type="text" value="{{ old('first_name') }}" name="first_name" id="first_name" required class="inputs" placeholder="First Name">
     
-                @error('firstname')
+                @error('first_name')
                     <p class="text-red text-xs italic">
                         <strong>{{ $message }}</strong>
                     </p>
@@ -43,9 +54,9 @@
     
             <!-- Middle Name -->
             <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="middlename" class="labels">Middle Name</label>
-                <input type="text" name="middlename" id="middlename" required class="inputs" placeholder="Middle Name">
-                @error('middlename')
+                <label for="middle_name" class="labels">Middle Name</label>
+                <input type="text" value="{{ old('middle_name') }}" name="middle_name" id="middle_name" class="inputs" placeholder="Middle Name">
+                @error('middle_name')
                     <p class="text-red text-xs italic">
                         <strong>{{ $message }}</strong>
                     </p>
@@ -62,7 +73,10 @@
                     <select name="gender" id="gender" class="selects">
                         <option value="">Select Gender</option>
                         @foreach($genders as $gender)
-                            <option value="{{ $gender->id }}"> {{ $gender->gender }} </option>
+                            <option value="{{ $gender->id }}"
+                                    {{ old('gender') == $gender->id ? 'selected' : '' }}>
+                                {{ $gender->gender }}
+                            </option>
                         @endforeach
 
                     </select>
@@ -86,7 +100,10 @@
                     <select name="marital_status" id="marital_status" class="selects">
                         <option value="">Select Marital Status</option>
                         @foreach($marital_statuses as $marital_status)
-                            <option value="{{ $marital_status->id }}"> {{ $marital_status->marital_status }} </option>
+                            <option value="{{ $marital_status->id }}"
+                                    {{ old('marital_status') == $marital_status->id ? 'selected' : '' }}>
+                                {{ $marital_status->marital_status }}
+                            </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -105,7 +122,7 @@
                     Date of Birth <span class="text-red">*</span>
                 </label>
     
-                <date-picker name="date_of_birth" placeholder="Day Month Year" ></date-picker>
+                <date-picker value="{{ old('date_of_birth') }}" name="date_of_birth" placeholder="Day Month Year" ></date-picker>
     
                 @error('date_of_birth')
                 <p class="text-red text-xs italic">
@@ -121,10 +138,12 @@
                 </label>
         
                 <div class="relative">
-                    <select name="nationality" id="nationality" class="selects">
+                    <select  name="nationality" id="nationality" class="selects">
                         <option value="">Select Nationality</option>
                         @foreach($countries as $country)
-                            <option value="{{ $country->id }}"> {{ $country->country }} </option>
+                            <option value="{{ $country->id }}"
+                                    {{ old('nationality') == $country->id ? 'selected' : '' }}>
+                                {{ $country->country }} {{ $country->id }} </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -147,7 +166,10 @@
                     <select name="state" id="state" class="selects">
                         <option value="">Select State</option>
                         @foreach($states as $state)
-                            <option value="{{ $state->id }}"> {{ $state->state }} </option>
+                            <option value="{{ $state->id }}"
+                                    {{ old('state') == $state->id ? 'selected' : '' }}>
+                                {{ $state->state }}
+                            </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -170,7 +192,9 @@
                     <select name="disability" id="disability" class="selects">
                         <option value="">Select Disability</option>
                         @foreach($disabilities as $disability)
-                            <option value="{{ $disability->id }}"> {{ $disability->disability }} </option>
+                            <option value="{{ $disability->id }}"
+                                    {{ old('disability') == $disability->id ? 'selected' : '' }}>
+                                {{ $disability->disability }} </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -186,7 +210,7 @@
             <!-- Disability Details -->
             <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
                 <label for="disability_details" class="labels">If Yes, Specify Disability</label>
-                <input type="text" name="disability_details" id="disability_details" required class="inputs" placeholder="Specify Disability">
+                <input type="text" value="{{ old('disability_details') }}" name="disability_details" id="disability_details" required class="inputs" placeholder="Specify Disability">
                 @error('disability_details')
                 <p class="text-red text-xs italic">
                     <strong>{{ $message }}</strong>
@@ -208,7 +232,7 @@
                     Email <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="email" id="email" required class="inputs" placeholder="example@gmail.com">
+                <input type="text" value="{{ old('email') }}" name="email" id="email" class="inputs" placeholder="example@gmail.com">
         
                 @error('email')
                 <p class="text-red text-xs italic">
@@ -223,7 +247,7 @@
                     Mobile Number <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="mobile_number" id="mobile_number" required class="inputs" placeholder="+2347031234567">
+                <input type="text" value="{{ old('mobile_number') }}" name="mobile_number" id="mobile_number" required class="inputs" placeholder="+2347031234567">
         
                 @error('mobile_number')
                 <p class="text-red text-xs italic">
@@ -238,7 +262,7 @@
                     Address
                 </label>
         
-                <input type="text" name="address" id="address" required class="inputs" placeholder="Km 10 Airport Road, Galadimawa">
+                <input type="text" value="{{ old('address') }}" name="address" id="address" required class="inputs" placeholder="Km 10 Airport Road, Galadimawa">
         
                 @error('address')
                 <p class="text-red text-xs italic">
@@ -257,7 +281,10 @@
                     <select name="country_of_residence" id="country_of_residence" class="selects">
                         <option value="">Select Country of Residence</option>
                         @foreach($countries as $country)
-                            <option value="{{ $country->id }}"> {{ $country->country }} </option>
+                            <option value="{{ $country->id }}"
+                                    {{ old('coutnry_of_residence') == $country->id ? 'selected' : '' }}>
+                                {{ $country->country }}
+                            </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -280,7 +307,10 @@
                     <select name="state_of_residence" id="state_of_residence" class="selects">
                         <option value="">Select State</option>
                         @foreach($states as $state)
-                            <option value="{{ $state->id }}"> {{ $state->state }} </option>
+                            <option value="{{ $state->id }}"
+                                    {{ old('state_of_residence') == $state->id ? 'selected' : '' }}>
+                                {{ $state->state }}
+                            </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -299,7 +329,7 @@
                     City/Town <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="city" id="city" required class="inputs" placeholder="Accra">
+                <input type="text" value="{{ old('city') }}" name="city" id="city" required class="inputs" placeholder="Accra">
         
                 @error('city')
                 <p class="text-red text-xs italic">
@@ -314,7 +344,7 @@
                     Zip Code
                 </label>
         
-                <input type="text" name="zip_code" id="zip_code" required class="inputs" placeholder="90210">
+                <input type="text" value="{{ old('zip_code') }}" name="zip_code" id="zip_code" class="inputs" placeholder="90210">
         
                 @error('zip_code')
                 <p class="text-red text-xs italic">
@@ -337,7 +367,7 @@
                     Institution and Location <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
+                <input type="text" value="{{ old('institution') }}" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
         
                 @error('institution')
                 <p class="text-red text-xs italic">
@@ -356,7 +386,10 @@
                     <select name="degree" id="degree" class="selects">
                         <option value="">Select Degree</option>
                         @foreach($degrees as $degree)
-                            <option value="{{ $degree->id }}"> {{ $degree->degree }} </option>
+                            <option value="{{ $degree->id }}"
+                                    {{ old('degree') == $degree->id ? 'selected' : '' }}>
+                                {{ $degree->degree }}
+                            </option>
                         @endforeach
 
                     </select>
@@ -376,7 +409,7 @@
                     Course of Study <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
+                <input type="text" value="{{ old('course_of_study') }}" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
         
                 @error('course_of_study')
                 <p class="text-red text-xs italic">
@@ -395,8 +428,12 @@
                     <div class="relative">
                         <select name="from_month" id="from_month" class="selects">
                             <option value="">Select Month</option>
-                            <option value="January">January</option>
-                            <option value="February">February</option>
+                            @foreach($months as $month)
+                                <option value="{{ $month->id }}"
+                                        {{ old('from_month') == $month->id ? 'selected' : '' }}>
+                                    {{ $month->months }}
+                                </option>
+                            @endforeach
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
@@ -404,8 +441,13 @@
                     <div class="relative ml-3">
                         <select name="from_year" id="from_year" class="selects">
                             <option value="">Select Year</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
+                            @for ($i = 2019; $i > 1980; $i--)
+                                <option value={{ $i }}
+                                        {{ old('from_year') == $i ? 'selected' : '' }}>
+                                    {{ $i }}
+                                </option>
+                            @endfor
+
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
@@ -428,8 +470,12 @@
                     <div class="relative">
                         <select name="to_month" id="to_month" class="selects">
                             <option value="">Select Month</option>
-                            <option value="January">January</option>
-                            <option value="February">February</option>
+                            @foreach($months as $month)
+                                <option value="{{ $month->id }}"
+                                        {{ old('to_month') == $month->id ? 'selected' : '' }}>
+                                    {{ $month->months }}
+                                </option>
+                            @endforeach
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
@@ -437,8 +483,12 @@
                     <div class="relative ml-3">
                         <select name="to_year" id="to_year" class="selects">
                             <option value="">Select Year</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
+                            @for ($i = 2019; $i > 1980; $i--)
+                                <option value={{ $i }}
+                                        {{ old('to_year') == $i ? 'selected' : '' }}>
+                                    {{ $i }}
+                                </option>
+                            @endfor
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
@@ -474,8 +524,10 @@
                 <div class="relative">
                     <select name="program" id="program" class="selects">
                         <option value="">Select Program</option>
-                        @foreach($programs as $programme)
-                            <option value="{{ $programme->id }}"> {{ $programme->programs }} </option>
+                        @foreach($programs as $program)
+                            <option value="{{ $program->id }}"
+                                    {{ old('program') == $program->id ? 'selected' : '' }}>
+                                {{ $program->program }} </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>
@@ -498,7 +550,9 @@
                     <select name="stream" id="stream" class="selects">
                         <option value="">Select Stream</option>
                         @foreach($streams as $stream)
-                            <option value="{{ $stream->id }}"> {{ $stream->stream }} </option>
+                            <option value="{{ $stream->id }}"
+                                    {{ old('stream') == $stream->id ? 'selected' : '' }}>
+                                {{ $stream->stream }} </option>
                         @endforeach
                         
                     </select>
@@ -527,10 +581,12 @@
                 </label>
         
                 <div class="relative">
-                    <select name="referee_title" id="referee_title" class="selects">
+                    <select selected="{{ old('referee_title') }}" name="referee_title" id="referee_title" class="selects">
                         <option value="">Select Title</option>
                         @foreach($titles as $title)
-                            <option value="{{ $title->id }}"> {{ $title->title }} </option>
+                            <option value="{{ $title->id }}"
+                                    {{ old('title') == $title->id ? 'selected' : '' }}>
+                                {{ $title->title }} </option>
                         @endforeach
 
                     </select>
@@ -550,7 +606,7 @@
                     Name <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
+                <input type="text" value="{{ old('referee_name') }}" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
         
                 @error('referee_name')
                 <p class="text-red text-xs italic">
@@ -565,7 +621,7 @@
                     Email <span class="text-red">*</span>
                 </label>
         
-                <input type="email" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
+                <input type="email" value="{{ old('referee_email') }}" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
         
                 @error('referee_email')
                 <p class="text-red text-xs italic">
@@ -580,7 +636,7 @@
                     Phone Number <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
+                <input type="text" value="{{ old('referee_phone') }}" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
         
                 @error('referee_phone')
                 <p class="text-red text-xs italic">
@@ -595,7 +651,7 @@
                     Institution/Organization <span class="text-red">*</span>
                 </label>
         
-                <input type="text" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
+                <input type="text" value="{{ old('referee_affiliation') }}" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
         
                 @error('referee_affiliation')
                 <p class="text-red text-xs italic">
@@ -613,60 +669,67 @@
         
         
         <!-- Documents -->
-        <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="section-head">
-                Documents
-            </div>
-    
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Passport photograph <span class="text-red">*</span>
-                </label>
-                
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="passport" id="passport" required>
-            </div>
-    
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Statement of purpose <span class="text-red">*</span>
-                </label>
-                
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="purpose_statement" id="purpose_statement" required>
-            </div>
-    
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Statement of Results <span class="text-red">*</span>
-                </label>
-                
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="result_statement" id="result_statement" required>
-            </div>
-    
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Academic Transcript <span class="text-red">*</span>
-                </label>
-                
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="transcript" id="transcript" required>
-            </div>
+{{--        <div class="flex flex-wrap -mx-3 mb-6 border rounded">--}}
+{{--            <div class="section-head">--}}
+{{--                Documents--}}
+{{--                <span>--}}
+{{--                    Upload a single PDF file that contains the following in order--}}
+{{--                    (a) Passport Photograph--}}
+{{--                    (b) Statement of Purpose--}}
+{{--                    (c) Statement of Result(s)--}}
+{{--                    (d) Academic Transcript(s)--}}
+{{--                </span>--}}
+{{--            </div>--}}
+{{--    --}}
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="referee_title" class="labels">--}}
+{{--                    Passport photograph <span class="text-red">*</span>--}}
+{{--                </label>--}}
+{{--                --}}
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="passport" name="passport" id="passport" required>--}}
+{{--            </div>--}}
+{{--    --}}
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="referee_title" class="labels">--}}
+{{--                    Statement of purpose <span class="text-red">*</span>--}}
+{{--                </label>--}}
+{{--                --}}
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="purpose_statement" name="purpose_statement" id="purpose_statement" required>--}}
+{{--            </div>--}}
+{{--    --}}
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="referee_title" class="labels">--}}
+{{--                    Statement of Results <span class="text-red">*</span>--}}
+{{--                </label>--}}
+{{--                --}}
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="result_statement" name="result_statement" id="result_statement" required>--}}
+{{--            </div>--}}
+{{--    --}}
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="referee_title" class="labels">--}}
+{{--                    Academic Transcript <span class="text-red">*</span>--}}
+{{--                </label>--}}
+{{--                --}}
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="transcript" name="transcript" id="transcript" required>--}}
+{{--            </div>--}}
 
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Reference Leter <span class="text-red">*</span>
-                </label>
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="referee_title" class="labels">--}}
+{{--                    Reference Leter <span class="text-red">*</span>--}}
+{{--                </label>--}}
 
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="rletter" id="rletter" required>
-            </div>
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="rletter" name="rletter" id="rletter" required>--}}
+{{--            </div>--}}
 
 
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="proposal" class="labels">
-                    Research Proposal
-                </label>
-                
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="proposal" id="proposal">
-            </div>
-        </div>
+{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
+{{--                <label for="proposal" class="labels">--}}
+{{--                    Research Proposal--}}
+{{--                </label>--}}
+{{--                --}}
+{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="proposal" name="proposal" id="proposal">--}}
+{{--            </div>--}}
+{{--        </div>--}}
         
         
         <!-- Declaration -->
@@ -676,7 +739,7 @@
             </div>
             <div class="block text-justify px-3 py-3 uppercase tracking-wide leading-normal text-xs font-bold">
                 I confirm that the information I have provided in this form is true, complete and accurate and no information or other information has been omitted. I acknowledge and that know that providing false information grant African University of Science and Technology the right to cancel my application and grounds for dismissal from the University.
-                <input type="checkbox" name="declaration" id="declaration" value="" required>
+                <input type="checkbox" value="{{ old('declaration') }}" name="declaration" id="declaration" value="" required>
             </div>
         </div>
         
