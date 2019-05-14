@@ -15,7 +15,7 @@ class CreateAppPersonalDetailsTable extends Migration
     {
         Schema::create('app_personal_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('application_id');
             $table->string('last_name', 200);
             $table->string('first_name', 200);
             $table->string('middle_name', 200)->nullable();
@@ -28,7 +28,10 @@ class CreateAppPersonalDetailsTable extends Migration
             $table->string('disability')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->delete('cascade');
+            $table->foreign('application_id')
+                ->references('id')
+                ->on('applications')
+                ->delete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders');
             $table->foreign('marital_status_id')->references('id')->on('marital_statuses');
             $table->foreign('nationality_id')->references('id')->on('countries');

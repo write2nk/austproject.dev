@@ -15,7 +15,7 @@ class CreateAppContactDetailsTable extends Migration
     {
         Schema::create('app_contact_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('applicant_id');
+            $table->unsignedBigInteger('application_id');
             $table->string('email', 200);
             $table->string('phone', 20);
             $table->string('address', 500);
@@ -25,9 +25,9 @@ class CreateAppContactDetailsTable extends Migration
             $table->string('zip_code', 10)->nullable();
             $table->timestamps();
 
-            $table->foreign('applicant_id')
+            $table->foreign('application_id')
                 ->references('id')
-                ->on('app_personal_details')
+                ->on('applications')
                 ->delete('cascade');
             $table->foreign('country_of_residence_id')->references('id')->on('countries');
             $table->foreign('state_of_residence_id')->references('id')->on('states');

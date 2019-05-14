@@ -15,14 +15,14 @@ class CreateAppProgrameDetailsTable extends Migration
     {
         Schema::create('app_programe_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('applicant_id');
+            $table->unsignedBigInteger('application_id');
             $table->string('program_id', 10);
             $table->string('stream_id', 10);
             $table->timestamps();
 
-            $table->foreign('applicant_id')
+            $table->foreign('application_id')
                 ->references('id')
-                ->on('app_personal_details')
+                ->on('applications')
                 ->delete('cascade');
             $table->foreign('program_id')->references('id')->on('programs');
             $table->foreign('stream_id')->references('id')->on('streams');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AppContactDetails;
 use App\AppEducationHistory;
+use App\Application;
 use App\AppPersonalDetails;
 use App\AppProgrameDetails;
 use App\AppRefereeDetails;
@@ -19,6 +20,7 @@ use App\States;
 use App\Streams;
 use App\Title;
 use Carbon\Carbon;
+use function compact;
 use function request;
 
 class ApplicationController extends Controller
@@ -26,6 +28,16 @@ class ApplicationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $applications = auth()->user()->applications;
+
+        $pendings = $applications->filter(function ($value, $key){ return ! $value->submitted; });
+        $submissions = $applications->filter(function ($value, $key){ return $value->submitted; });
+
+        return view('application.index', compact('pendings', 'submissions'));
     }
 
     public function create()

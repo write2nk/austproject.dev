@@ -15,7 +15,7 @@ class CreateAppEducationHistoriesTable extends Migration
     {
         Schema::create('app_education_histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('applicant_id');
+            $table->unsignedBigInteger('application_id');
             $table->string('institution', 200);
             $table->unsignedInteger('degree_id');
             $table->string('course', 200);
@@ -25,9 +25,9 @@ class CreateAppEducationHistoriesTable extends Migration
             $table->year('graduation_year');
             $table->timestamps();
 
-            $table->foreign('applicant_id')
+            $table->foreign('application_id')
                 ->references('id')
-                ->on('app_personal_details')
+                ->on('applications')
                 ->delete('cascade');
             $table->foreign('degree_id')->references('id')->on('degrees');
             $table->foreign('start_month_id')->references('id')->on('months');

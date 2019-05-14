@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('application', 'ApplicationController@create')->name('application.create');
+Route::get('application', 'ApplicationController@index')->name('application.index');
+Route::get('application/create', 'ApplicationController@create')->name('application.create');
+Route::get('application/{application}', 'ApplicationController@show')->name('application.show');
+Route::patch('application/{application}', 'ApplicationController@update')->name('application.update');
 Route::post('application', 'ApplicationController@store')->name('application.store');
+
+Route::get('submission/{application}', 'SubmissionController@show')->name('submission.show');
 
 Auth::routes();
 
-Route::get('home', 'ApplicationController@create')->name('home');
+Route::get('home', 'ApplicationController@index')->name('home');
 
