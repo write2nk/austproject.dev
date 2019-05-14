@@ -21,19 +21,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($pendings as $pending)
+                @forelse($pendings as $pending)
                     <tr class="hover:bg-grey-lightest">
                         <td class="border-b border-grey-light">
-                            <a class="block no-underline px-6 py-4"
+                            <a class="block no-underline px-6 py-4 text-grey-darker"
                                href="{{ route('application.show', ['application' => $pending->id]) }}">
                                 {{ $pending->application_no }}
                             </a>
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light">
+                        <td class="py-4 px-6 border-b border-grey-light text-grey-darker">
                             {{ $pending->created_at }}
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="2" class="border-b border-grey-light">
+                            <span class=" block px-6 py-3 text-grey">No Pending Application</span>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
             <a class="block px-6 py-4 no-underline text-blue-light text-sm uppercase font-bold hover:bg-grey-lightest" href="{{ route('application.create') }}">New Application</a>
@@ -59,19 +65,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($submissions as $submission)
+                @forelse($submissions as $submission)
                     <tr class="hover:bg-grey-lightest">
                         <td class="border-b border-grey-light">
-                            <a class="block no-underline px-6 py-4"
+                            <a class="block no-underline px-6 py-4 text-grey-darker"
                                href="{{ route('submission.show', ['application' => $submission->id]) }}">
                                 {{ $submission->application_no }}
                             </a>
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light">
+                        <td class="py-4 px-6 border-b border-grey-light text-grey-darker">
                             {{ $submission->submitted_on }}
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="2" class="border-b border-grey-light">
+                                <span class=" block px-6 py-3 text-grey">No Submitted Application</span>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
