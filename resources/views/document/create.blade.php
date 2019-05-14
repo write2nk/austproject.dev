@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="flex flex-col items-center">
-    <form class="w-full max-w-md" action="{{ route('document.store') }}" method="post">
+    <form class="w-full max-w-md" action="{{ route('document.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         
         @if ($errors->any())
@@ -36,6 +36,8 @@
                 </label>
                 
                 <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="document" id="document" required>
+    
+                <input type="text" name="application_id" value="{{ $application->id }}" hidden>
                 
                 @error('document')
                 <p class="text-red text-xs italic">

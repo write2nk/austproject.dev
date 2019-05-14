@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
+use function compact;
 use Illuminate\Http\Request;
 use function view;
 
@@ -12,16 +14,23 @@ class DocumentController extends Controller
         $this->middleware('auth');
     }
 
-    public function create()
+    public function create(Application $application)
     {
-        return view('document.create');
+        return view('document.create', compact('application'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $this->validate([
-            'document' => 'required|file|mimes:pdf|max:2048'
-        ])
-        dd(request()->all());
+        $application_no = '';
+
+        $validated = request()->validate(['document' => 'required|file|mimes:pdf|max:2048']);
+
+        dd($validated);
+        
+        $filename = '';
+
+        $path = request()->store('documents');
+
+        dd($path);
     }
 }
