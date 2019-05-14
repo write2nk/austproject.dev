@@ -668,70 +668,6 @@
         </div>
         
         
-        <!-- Documents -->
-{{--        <div class="flex flex-wrap -mx-3 mb-6 border rounded">--}}
-{{--            <div class="section-head">--}}
-{{--                Documents--}}
-{{--                <span>--}}
-{{--                    Upload a single PDF file that contains the following in order--}}
-{{--                    (a) Passport Photograph--}}
-{{--                    (b) Statement of Purpose--}}
-{{--                    (c) Statement of Result(s)--}}
-{{--                    (d) Academic Transcript(s)--}}
-{{--                </span>--}}
-{{--            </div>--}}
-{{--    --}}
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="referee_title" class="labels">--}}
-{{--                    Passport photograph <span class="text-red">*</span>--}}
-{{--                </label>--}}
-{{--                --}}
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="passport" name="passport" id="passport" required>--}}
-{{--            </div>--}}
-{{--    --}}
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="referee_title" class="labels">--}}
-{{--                    Statement of purpose <span class="text-red">*</span>--}}
-{{--                </label>--}}
-{{--                --}}
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="purpose_statement" name="purpose_statement" id="purpose_statement" required>--}}
-{{--            </div>--}}
-{{--    --}}
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="referee_title" class="labels">--}}
-{{--                    Statement of Results <span class="text-red">*</span>--}}
-{{--                </label>--}}
-{{--                --}}
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="result_statement" name="result_statement" id="result_statement" required>--}}
-{{--            </div>--}}
-{{--    --}}
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="referee_title" class="labels">--}}
-{{--                    Academic Transcript <span class="text-red">*</span>--}}
-{{--                </label>--}}
-{{--                --}}
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="transcript" name="transcript" id="transcript" required>--}}
-{{--            </div>--}}
-
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="referee_title" class="labels">--}}
-{{--                    Reference Leter <span class="text-red">*</span>--}}
-{{--                </label>--}}
-
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="rletter" name="rletter" id="rletter" required>--}}
-{{--            </div>--}}
-
-
-{{--            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">--}}
-{{--                <label for="proposal" class="labels">--}}
-{{--                    Research Proposal--}}
-{{--                </label>--}}
-{{--                --}}
-{{--                <input class="mb-3 text-grey-dark px-3 py-4" type="filevaluen"{{ old('ame') }}="proposal" name="proposal" id="proposal">--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        
-        
         <!-- Declaration -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
@@ -746,7 +682,7 @@
         
         <!-- Submit -->
         <div class="flex flex-wrap -mx-3 mb-6 justify-center">
-            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Continue">
+            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Next">
         </div>
     </form>
 </div>

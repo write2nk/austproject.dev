@@ -13,6 +13,7 @@ use App\Streams;
 use App\Disability;
 use App\MaritalStatus;
 use App\Http\Requests\ApplicationForm;
+use function redirect;
 
 class ApplicationController extends Controller
 {
@@ -54,7 +55,9 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationForm $form)
     {
-        $form->persist();
+        $application_id = $form->persist();
+
+        return redirect()->route('document.create');
     }
 
     public function show()

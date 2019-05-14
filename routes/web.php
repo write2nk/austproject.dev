@@ -23,6 +23,13 @@ Route::post('application', 'ApplicationController@store')->name('application.sto
 
 Route::get('submission/{application}', 'SubmissionController@show')->name('submission.show');
 
+Route::get('document/create', 'DocumentController@create')->name('document.create');
+Route::post('document', 'DocumentController@store')->name('document.store');
+
+Route::get('payment/create', 'PaymentController@create')->name('payment.create');
+Route::post('payment', 'PaymentController@store')->name('payment.store');
+
+
 Auth::routes();
 
 Route::get('home', 'ApplicationController@index')->name('home');
