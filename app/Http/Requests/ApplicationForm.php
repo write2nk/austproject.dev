@@ -49,6 +49,7 @@ class ApplicationForm extends FormRequest
             'to_month' => 'required',
             'to_year' => 'required',
             'program' => 'required',
+            'stream' => 'required',
             'referee_title' => 'required',
             'referee_name' => 'required',
             'referee_email' => 'required|email',
