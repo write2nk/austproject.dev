@@ -143,7 +143,7 @@
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}"
                                     {{ old('nationality') == $country->id ? 'selected' : '' }}>
-                                {{ $country->country }} {{ $country->id }} </option>
+                                {{ $country->country }} </option>
                         @endforeach
                     </select>
                     <drop-down-svg></drop-down-svg>

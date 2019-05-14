@@ -14,7 +14,7 @@ class CreateStreamsTable extends Migration
     public function up()
     {
         Schema::create('streams', function (Blueprint $table) {
-            $table->integerIncrements('id');
+            $table->string('id', 10)->unique();
             $table->string('stream', 200);
         });
     }

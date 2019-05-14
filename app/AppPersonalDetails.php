@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppPersonalDetails extends Model
 {
-    public $incrementing = false;
-
-    protected $keyType = 'string';
 
     protected $guarded = [];
+
+    protected $dates = ['date_of_birth', 'created_at', 'updated_at'];
 
     public function user()
     {
