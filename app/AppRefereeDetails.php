@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppRefereeDetails extends Model
 {
-    //
+    protected $guarded = [];
 }
