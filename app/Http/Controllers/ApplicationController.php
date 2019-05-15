@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application;
 use App\Title;
 use App\Degree;
 use App\Gender;
@@ -60,8 +61,32 @@ class ApplicationController extends Controller
         return redirect()->route('document.create', ['application' => $application]);
     }
 
-    public function show()
+    public function show(Application $application)
     {
+        $countries = Country::all();
+        $states = States::all();
+        $streams = Streams::all();
+        $marital_statuses = MaritalStatus::all();
+        $programs = Program::all();
+        $genders = Gender::all();
+        $disabilities = Disability::all();
+        $degrees = Degree::all();
+        $titles = Title::all();
+        $months = Months::all();
 
+        $form = Application::with([
+            'personal', 'contact', 'education',
+            'program', 'referee'
+        ])->where('id','=', $application->id)->first();
+
+//        dd($form);
+
+        return view('application.edit', compact('form', 'countries', 'states', 'streams', 'marital_statuses', 'programs', 'genders',
+            'disabilities', 'degrees',  'titles', 'months'));
+    }
+
+    public function update(ApplicationForm $form)
+    {
+        
     }
 }

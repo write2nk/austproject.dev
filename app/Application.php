@@ -10,7 +10,7 @@ class Application extends Model
 
     public function personal()
     {
-        return $this->hasOne(AppProgrameDetails::class);
+        return $this->hasOne(AppPersonalDetails::class);
     }
 
     public function contact()
