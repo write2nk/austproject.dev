@@ -2,9 +2,10 @@
 
 @section('title', 'Edit Application Form')
 
+<!-- Personal Details -->
 @section('content')
     <div class="flex flex-col items-center">
-        <form class="w-full max-w-md" action="{{ route('application.update') }}" method="post">
+        <form class="w-full max-w-md" action="{{ route('application.update' ,['application' => $form->id]) }}" method="post">
             @method('patch')
             @csrf
 
@@ -18,7 +19,7 @@
                 </div>
             @endif
 
-            <!-- Personal Details -->
+
             <div class="flex flex-wrap -mx-3 mb-6 border rounded">
                 <div class="section-head">
                     Personal Details
@@ -234,7 +235,7 @@
                         Email <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('email') }}" name="email" id="email" class="inputs" placeholder="example@gmail.com">
+                    <input type="text" value="{{ $form->contact->email }}" name="email" id="email" class="inputs" placeholder="example@gmail.com">
 
                     @error('email')
                     <p class="text-red text-xs italic">
@@ -249,7 +250,7 @@
                         Mobile Number <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('mobile_number') }}" name="mobile_number" id="mobile_number" required class="inputs" placeholder="+2347031234567">
+                    <input type="text" value="{{ $form->contact->phone }}" name="mobile_number" id="mobile_number" required class="inputs" placeholder="+2347031234567">
 
                     @error('mobile_number')
                     <p class="text-red text-xs italic">
@@ -264,7 +265,7 @@
                         Address
                     </label>
 
-                    <input type="text" value="{{ old('address') }}" name="address" id="address" required class="inputs" placeholder="Km 10 Airport Road, Galadimawa">
+                    <input type="text" value="{{ $form->contact->address }}" name="address" id="address" required class="inputs" placeholder="Km 10 Airport Road, Galadimawa">
 
                     @error('address')
                     <p class="text-red text-xs italic">
@@ -284,7 +285,7 @@
                             <option value="">Select Country of Residence</option>
                             @foreach($countries as $country)
                                 <option value="{{ $country->id }}"
-                                        {{ old('coutnry_of_residence') == $country->id ? 'selected' : '' }}>
+                                        {{ $form->contact->country_of_residence_id == $country->id ? 'selected' : '' }}>
                                     {{ $country->country }}
                                 </option>
                             @endforeach
@@ -310,7 +311,7 @@
                             <option value="">Select State</option>
                             @foreach($states as $state)
                                 <option value="{{ $state->id }}"
-                                        {{ old('state_of_residence') == $state->id ? 'selected' : '' }}>
+                                        {{ $form->contact->state_of_residence_id == $state->id ? 'selected' : '' }}>
                                     {{ $state->state }}
                                 </option>
                             @endforeach
@@ -331,7 +332,7 @@
                         City/Town <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('city') }}" name="city" id="city" required class="inputs" placeholder="Accra">
+                    <input type="text" value="{{ $form->contact->city }}" name="city" id="city" required class="inputs" placeholder="Accra">
 
                     @error('city')
                     <p class="text-red text-xs italic">
@@ -346,7 +347,7 @@
                         Zip Code
                     </label>
 
-                    <input type="text" value="{{ old('zip_code') }}" name="zip_code" id="zip_code" class="inputs" placeholder="90210">
+                    <input type="text" value="{{ $form->contact->zip_code }}" name="zip_code" id="zip_code" class="inputs" placeholder="90210">
 
                     @error('zip_code')
                     <p class="text-red text-xs italic">
@@ -355,6 +356,7 @@
                     @enderror
                 </div>
             </div>
+
 
 
             <!-- Educational Background -->
@@ -369,7 +371,7 @@
                         Institution and Location <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('institution') }}" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
+                    <input type="text" value="{{ $form->education[0]->institution }}" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
 
                     @error('institution')
                     <p class="text-red text-xs italic">
@@ -389,7 +391,7 @@
                             <option value="">Select Degree</option>
                             @foreach($degrees as $degree)
                                 <option value="{{ $degree->id }}"
-                                        {{ old('degree') == $degree->id ? 'selected' : '' }}>
+                                        {{ $form->education[0]->degree_id == $degree->id ? 'selected' : '' }}>
                                     {{ $degree->degree }}
                                 </option>
                             @endforeach
@@ -411,7 +413,7 @@
                         Course of Study <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('course_of_study') }}" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
+                    <input type="text" value="{{ $form->education[0]->course }}" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
 
                     @error('course_of_study')
                     <p class="text-red text-xs italic">
@@ -432,7 +434,7 @@
                                 <option value="">Select Month</option>
                                 @foreach($months as $month)
                                     <option value="{{ $month->id }}"
-                                            {{ old('from_month') == $month->id ? 'selected' : '' }}>
+                                            {{ $form->education[0]->start_month_id == $month->id ? 'selected' : '' }}>
                                         {{ $month->months }}
                                     </option>
                                 @endforeach
@@ -445,7 +447,7 @@
                                 <option value="">Select Year</option>
                                 @for ($i = 2019; $i > 1980; $i--)
                                     <option value={{ $i }}
-                                            {{ old('from_year') == $i ? 'selected' : '' }}>
+                                            {{ $form->education[0]->start_year == $i ? 'selected' : '' }}>
                                         {{ $i }}
                                     </option>
                                 @endfor
@@ -474,7 +476,7 @@
                                 <option value="">Select Month</option>
                                 @foreach($months as $month)
                                     <option value="{{ $month->id }}"
-                                            {{ old('to_month') == $month->id ? 'selected' : '' }}>
+                                            {{ $form->education[0]->graduation_month_id == $month->id ? 'selected' : '' }}>
                                         {{ $month->months }}
                                     </option>
                                 @endforeach
@@ -487,7 +489,7 @@
                                 <option value="">Select Year</option>
                                 @for ($i = 2019; $i > 1980; $i--)
                                     <option value={{ $i }}
-                                            {{ old('to_year') == $i ? 'selected' : '' }}>
+                                            {{ $form->education[0]->graduation_year == $i ? 'selected' : '' }}>
                                         {{ $i }}
                                     </option>
                                 @endfor
