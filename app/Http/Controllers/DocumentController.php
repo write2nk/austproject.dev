@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\AppDocuments;
 use App\Application;
 use App\DocumentType;
-use function compact;
 use Illuminate\Http\Request;
-use function view;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use function is_dir;
 
 class DocumentController extends Controller
 {
@@ -34,9 +35,15 @@ class DocumentController extends Controller
 
         $application = Application::find(request()->application_id);
 
-        $filename = $application->application_no . '-' . request()->document_type_id . '.' . 'pdf';
+        $dir = 'documents/' . $application->application_no;
 
-        $path = request()->file('document')->storeAs('documents', $filename);
+        $filename = $application->application_no . '-' . request()->document_type . '.' . 'pdf';
+
+        if(! Storage::exists($dir)){
+            Storage::makeDirectory($dir);
+        }
+
+        $path = request()->file('document')->storeAs($dir, $filename);
 
         AppDocuments::create([
             'application_id' => $application->id,
