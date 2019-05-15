@@ -55,9 +55,9 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationForm $form)
     {
-        $application_id = $form->persist();
+        $application = $form->persist();
 
-        return redirect()->route('document.create');
+        return redirect()->route('document.create', ['application' => $application]);
     }
 
     public function show()

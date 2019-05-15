@@ -30,12 +30,40 @@
                 </div>
             </div>
     
-            <div class="w-full px-3 mb-4 md:mb-0 pt-2 border">
-                <label for="referee_title" class="labels">
-                    Documents <span class="text-red lowercase text-xs italic">(max size 2MB)*</span>
+            <!-- Document Type -->
+            <div class="w-full md:w-2/5 px-3 mb-4 md:mb-0">
+                <label for="document_type" class="labels">
+                    Document Type <span class="text-red">*</span>
+                </label>
+        
+                <div class="relative">
+                    <select name="document_type" id="document_type" class="selects">
+                        <option value="">Select Document Type</option>
+                        @foreach($document_types as $document_type)
+                            <option value="{{ $document_type->id }}"
+                                    {{ old('document_type') == $document_type->id ? 'selected' : '' }}>
+                                {{ $document_type->document_type_name }}
+                            </option>
+                        @endforeach
+            
+                    </select>
+                    <drop-down-svg></drop-down-svg>
+                </div>
+        
+                @error('document_type')
+                <p class="text-red text-xs italic">
+                    <strong>{{ $message }}</strong>
+                </p>
+                @enderror
+            </div>
+    
+            <!-- Document -->
+            <div class="w-full md:w-2/5 px-3 mb-4 md:mb-0">
+                <label for="document" class="labels">
+                    Document <span class="text-red">*</span>
                 </label>
                 
-                <input class="mb-3 text-grey-dark px-3 py-4" type="file" name="document" id="document" required>
+                <input class="mb-3 text-grey-dark py-2" type="file" name="document" id="document" required>
     
                 <input type="text" name="application_id" value="{{ $application->id }}" hidden>
                 
@@ -46,13 +74,46 @@
                 @enderror
             </div>
     
+            <!-- Document -->
+            <div class="w-full md:w-1/5 px-3 md:mb-0 mt-3">
+                <input class="block px-2 py-3 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Upload">
+            </div>
+            
+            <div class="bg-white shadow-md rounded my-6 w-full mt-10">
+                <table class="text-left w-full border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="py-3 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Document Type</th>
+                            <th class="py-3 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Uploaded</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($document_types as $document_type)
+                            <tr>
+                                <td class="border-b border-grey-light px-4 py-3 text-grey-darker">{{ $document_type->document_type_name }}</td>
+                                <td class="py-3 px-4 border-b border-grey-light text-grey-darker">
+                                    @if($documents->contains('document_type_id', $document_type->id))
+                                        <span class="text-green-dark">
+                                        {{ _('Uploaded') }}
+                                        </span>
+                                    @else
+                                        <span class="text-red-dark">
+                                        {{ _('Yet to be Uploaded') }}
+                                        </span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     
         <!-- Submit -->
         <div class="flex flex-wrap -mx-3 mb-6 justify-center">
-            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-grey text-white font-bold hover:bg-grey-dark mr-3" type="button" value="Previous">
+            <a class="block px-3 py-4 block uppercase tracking-wide  rounded bg-grey text-white font-bold hover:bg-grey-dark mr-3 no-underline" href="{{ route('application.create') }}"> Previous </a>
             
-            <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Next">
+            <a class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark no-underline" href="{{ route('payment.create', ['application' => $application->id]) }}">Next </a>
         </div>
     </form>
 </div>

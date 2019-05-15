@@ -135,5 +135,7 @@ class ApplicationForm extends FormRequest
                 'referee_affiliation' => $this->referee_affiliation
             ]);
         }, 3);
+
+        return Application::where('application_no', '=', $application_no)->first();
     }
 }

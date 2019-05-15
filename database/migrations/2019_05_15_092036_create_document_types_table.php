@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppDocumentsTable extends Migration
+class CreateDocumentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAppDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('app_documents', function (Blueprint $table) {
+        Schema::create('document_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('document_type_name');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateAppDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app_documents');
+        Schema::dropIfExists('document_types');
     }
 }

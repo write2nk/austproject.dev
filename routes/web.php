@@ -26,7 +26,7 @@ Route::get('submission/{application}', 'SubmissionController@show')->name('submi
 Route::get('document/{application}', 'DocumentController@create')->name('document.create');
 Route::post('document', 'DocumentController@store')->name('document.store');
 
-Route::get('payment/create', 'PaymentController@create')->name('payment.create');
+Route::get('payment/{application}', 'PaymentController@create')->name('payment.create');
 Route::post('payment', 'PaymentController@store')->name('payment.store');
 
 
