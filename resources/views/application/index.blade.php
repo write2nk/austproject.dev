@@ -30,7 +30,7 @@
                             </a>
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light text-grey-darker">
-                            {{ $pending->created_at }}
+                            {{ $pending->created_at->toDateString() }}
                         </td>
                     </tr>
                 @empty
