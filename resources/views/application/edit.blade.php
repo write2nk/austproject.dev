@@ -530,7 +530,7 @@
                             <option value="">Select Program</option>
                             @foreach($programs as $program)
                                 <option value="{{ $program->id }}"
-                                        {{ old('program') == $program->id ? 'selected' : '' }}>
+                                        {{ $form->program->program_id == $program->id ? 'selected' : '' }}>
                                     {{ $program->program }} </option>
                             @endforeach
                         </select>
@@ -555,7 +555,7 @@
                             <option value="">Select Stream</option>
                             @foreach($streams as $stream)
                                 <option value="{{ $stream->id }}"
-                                        {{ old('stream') == $stream->id ? 'selected' : '' }}>
+                                        {{ $form->program->stream_id == $stream->id ? 'selected' : '' }}>
                                     {{ $stream->stream }} </option>
                             @endforeach
 
@@ -585,11 +585,11 @@
                     </label>
 
                     <div class="relative">
-                        <select selected="{{ old('referee_title') }}" name="referee_title" id="referee_title" class="selects">
+                        <select name="referee_title" id="referee_title" class="selects">
                             <option value="">Select Title</option>
-                            @foreach($titles as $title)
+                        @foreach($titles as $title)
                                 <option value="{{ $title->id }}"
-                                        {{ old('title') == $title->id ? 'selected' : '' }}>
+                                        {{ $form->referee[0]->referee_title_id == $title->id ? 'selected' : '' }}>
                                     {{ $title->title }} </option>
                             @endforeach
 
@@ -610,7 +610,7 @@
                         Name <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('referee_name') }}" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
+                    <input type="text" value="{{ $form->referee[0]->referee_name }}" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
 
                     @error('referee_name')
                     <p class="text-red text-xs italic">
@@ -625,7 +625,7 @@
                         Email <span class="text-red">*</span>
                     </label>
 
-                    <input type="email" value="{{ old('referee_email') }}" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
+                    <input type="email" value="{{ $form->referee[0]->referee_email }}" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
 
                     @error('referee_email')
                     <p class="text-red text-xs italic">
@@ -640,7 +640,7 @@
                         Phone Number <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('referee_phone') }}" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
+                    <input type="text" value="{{ $form->referee[0]->referee_phone }}" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
 
                     @error('referee_phone')
                     <p class="text-red text-xs italic">
@@ -655,7 +655,7 @@
                         Institution/Organization <span class="text-red">*</span>
                     </label>
 
-                    <input type="text" value="{{ old('referee_affiliation') }}" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
+                    <input type="text" value="{{ $form->referee[0]->referee_affiliation }}" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
 
                     @error('referee_affiliation')
                     <p class="text-red text-xs italic">
