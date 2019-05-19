@@ -40,6 +40,10 @@
    &:focus{ @apply outline-none bg-white border-grey; }
  }
 
+ .table-data{
+   @apply border-b border-grey-light px-6 py-2 text-grey-darker;
+ }
+
 @tailwind utilities;
 
 
