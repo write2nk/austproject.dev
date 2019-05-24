@@ -79,14 +79,16 @@ class ApplicationController extends Controller
             'program', 'referee'
         ])->where('id','=', $application->id)->first();
 
-//        dd($form);
-
         return view('application.edit', compact('form', 'countries', 'states', 'streams', 'marital_statuses', 'programs', 'genders',
             'disabilities', 'degrees',  'titles', 'months'));
     }
 
-    public function update(ApplicationForm $form)
+    public function update(ApplicationForm $form, Application $application)
     {
-        
+        $form->update($application);
+
+        dd(request()->all());
+
+        return redirect()->route('document.create', ['application' => $application]);
     }
 }

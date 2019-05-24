@@ -8,7 +8,6 @@ use App\DocumentType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use function is_dir;
 
 class DocumentController extends Controller
 {
