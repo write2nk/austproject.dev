@@ -56,6 +56,8 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationForm $form)
     {
+        dd($form->request);
+
         $application = $form->persist();
 
         return redirect()->route('document.create', ['application' => $application]);
@@ -86,8 +88,6 @@ class ApplicationController extends Controller
     public function update(ApplicationForm $form, Application $application)
     {
         $form->update($application);
-
-        dd(request()->all());
 
         return redirect()->route('document.create', ['application' => $application]);
     }

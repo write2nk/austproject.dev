@@ -356,158 +356,159 @@
         
         
         <!-- Educational Background -->
-        <div class="flex flex-wrap -mx-3 mb-6 border rounded">
-            <div class="section-head">
-                Educational History
-            </div>
-    
-            <!-- Institution -->
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="institution" class="labels">
-                    Institution and Location <span class="text-red">*</span>
-                </label>
-        
-                <input type="text" value="{{ old('institution') }}" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
-        
-                @error('institution')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- Degree -->
-            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="degree" class="labels">
-                    Degree <span class="text-red">*</span>
-                </label>
-        
-                <div class="relative">
-                    <select name="degree" id="degree" class="selects">
-                        <option value="">Select Degree</option>
-                        @foreach($degrees as $degree)
-                            <option value="{{ $degree->id }}"
-                                    {{ old('degree') == $degree->id ? 'selected' : '' }}>
-                                {{ $degree->degree }}
-                            </option>
-                        @endforeach
+        <education-form></education-form>
 
-                    </select>
-                    <drop-down-svg></drop-down-svg>
-                </div>
-        
-                @error('degree')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-            
-            <!-- Course of Study -->
-            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="course_of_study" class="labels">
-                    Course of Study <span class="text-red">*</span>
-                </label>
-        
-                <input type="text" value="{{ old('course_of_study') }}" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
-        
-                @error('course_of_study')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- From -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="from_month" class="labels">
-                    Start Date <span class="text-red">*</span>
-                </label>
-        
-                <div class="flex">
-                    <div class="relative">
-                        <select name="from_month" id="from_month" class="selects">
-                            <option value="">Select Month</option>
-                            @foreach($months as $month)
-                                <option value="{{ $month->id }}"
-                                        {{ old('from_month') == $month->id ? 'selected' : '' }}>
-                                    {{ $month->months }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <drop-down-svg></drop-down-svg>
-                    </div>
-        
-                    <div class="relative ml-3">
-                        <select name="from_year" id="from_year" class="selects">
-                            <option value="">Select Year</option>
-                            @for ($i = 2019; $i > 1980; $i--)
-                                <option value={{ $i }}
-                                        {{ old('from_year') == $i ? 'selected' : '' }}>
-                                    {{ $i }}
-                                </option>
-                            @endfor
+    {{--<div class="flex flex-wrap -mx-3 mb-6 border rounded">--}}
+            {{--<div class="section-head">--}}
+                {{--Educational History--}}
+            {{--</div>--}}
+    {{----}}
+            {{--<!-- Institution -->--}}
+            {{--<div class="w-full px-3 mb-4 md:mb-0">--}}
+                {{--<label for="institution" class="labels">--}}
+                    {{--Institution and Location <span class="text-red">*</span>--}}
+                {{--</label>--}}
+        {{----}}
+                {{--<input type="text" value="{{ old('institution') }}" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">--}}
+        {{----}}
+                {{--@error('institution')--}}
+                {{--<p class="text-red text-xs italic">--}}
+                    {{--<strong>{{ $message }}</strong>--}}
+                {{--</p>--}}
+                {{--@enderror--}}
+            {{--</div>--}}
+    {{----}}
+            {{--<!-- Degree -->--}}
+            {{--<div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">--}}
+                {{--<label for="degree" class="labels">--}}
+                    {{--Degree <span class="text-red">*</span>--}}
+                {{--</label>--}}
+        {{----}}
+                {{--<div class="relative">--}}
+                    {{--<select name="degree" id="degree" class="selects">--}}
+                        {{--<option value="">Select Degree</option>--}}
+                        {{--@foreach($degrees as $degree)--}}
+                            {{--<option value="{{ $degree->id }}"--}}
+                                    {{--{{ old('degree') == $degree->id ? 'selected' : '' }}>--}}
+                                {{--{{ $degree->degree }}--}}
+                            {{--</option>--}}
+                        {{--@endforeach--}}
 
-                        </select>
-                        <drop-down-svg></drop-down-svg>
-                    </div>
-                </div>
-        
-                @error('from_month')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- To -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="to_month" class="labels">
-                    Graduation Date <span class="text-red">*</span>
-                </label>
-        
-                <div class="flex">
-                    <div class="relative">
-                        <select name="to_month" id="to_month" class="selects">
-                            <option value="">Select Month</option>
-                            @foreach($months as $month)
-                                <option value="{{ $month->id }}"
-                                        {{ old('to_month') == $month->id ? 'selected' : '' }}>
-                                    {{ $month->months }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <drop-down-svg></drop-down-svg>
-                    </div>
-            
-                    <div class="relative ml-3">
-                        <select name="to_year" id="to_year" class="selects">
-                            <option value="">Select Year</option>
-                            @for ($i = 2019; $i > 1980; $i--)
-                                <option value={{ $i }}
-                                        {{ old('to_year') == $i ? 'selected' : '' }}>
-                                    {{ $i }}
-                                </option>
-                            @endfor
-                        </select>
-                        <drop-down-svg></drop-down-svg>
-                    </div>
-                </div>
-        
-                @error('to_month')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <hr class="w-full border">
-            
-            <div class="ml-auto mr-3 mb-3">
-                <input class="block px-3 py-4 block border rounded bg-transparent text-grey font-bold hover:bg-grey-lighter" type="button" value=" + Add Another">
-            </div>
-        </div>
-        
+                    {{--</select>--}}
+                    {{--<drop-down-svg></drop-down-svg>--}}
+                {{--</div>--}}
+        {{----}}
+                {{--@error('degree')--}}
+                {{--<p class="text-red text-xs italic">--}}
+                    {{--<strong>{{ $message }}</strong>--}}
+                {{--</p>--}}
+                {{--@enderror--}}
+            {{--</div>--}}
+            {{----}}
+            {{--<!-- Course of Study -->--}}
+            {{--<div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">--}}
+                {{--<label for="course_of_study" class="labels">--}}
+                    {{--Course of Study <span class="text-red">*</span>--}}
+                {{--</label>--}}
+        {{----}}
+                {{--<input type="text" value="{{ old('course_of_study') }}" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">--}}
+        {{----}}
+                {{--@error('course_of_study')--}}
+                {{--<p class="text-red text-xs italic">--}}
+                    {{--<strong>{{ $message }}</strong>--}}
+                {{--</p>--}}
+                {{--@enderror--}}
+            {{--</div>--}}
+    {{----}}
+            {{--<!-- From -->--}}
+            {{--<div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">--}}
+                {{--<label for="from_month" class="labels">--}}
+                    {{--Start Date <span class="text-red">*</span>--}}
+                {{--</label>--}}
+        {{----}}
+                {{--<div class="flex">--}}
+                    {{--<div class="relative">--}}
+                        {{--<select name="from_month" id="from_month" class="selects">--}}
+                            {{--<option value="">Select Month</option>--}}
+                            {{--@foreach($months as $month)--}}
+                                {{--<option value="{{ $month->id }}"--}}
+                                        {{--{{ old('from_month') == $month->id ? 'selected' : '' }}>--}}
+                                    {{--{{ $month->months }}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--</select>--}}
+                        {{--<drop-down-svg></drop-down-svg>--}}
+                    {{--</div>--}}
+        {{----}}
+                    {{--<div class="relative ml-3">--}}
+                        {{--<select name="from_year" id="from_year" class="selects">--}}
+                            {{--<option value="">Select Year</option>--}}
+                            {{--@for ($i = 2019; $i > 1980; $i--)--}}
+                                {{--<option value={{ $i }}--}}
+                                        {{--{{ old('from_year') == $i ? 'selected' : '' }}>--}}
+                                    {{--{{ $i }}--}}
+                                {{--</option>--}}
+                            {{--@endfor--}}
+
+                        {{--</select>--}}
+                        {{--<drop-down-svg></drop-down-svg>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+        {{----}}
+                {{--@error('from_month')--}}
+                {{--<p class="text-red text-xs italic">--}}
+                    {{--<strong>{{ $message }}</strong>--}}
+                {{--</p>--}}
+                {{--@enderror--}}
+            {{--</div>--}}
+    {{----}}
+            {{--<!-- To -->--}}
+            {{--<div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">--}}
+                {{--<label for="to_month" class="labels">--}}
+                    {{--Graduation Date <span class="text-red">*</span>--}}
+                {{--</label>--}}
+        {{----}}
+                {{--<div class="flex">--}}
+                    {{--<div class="relative">--}}
+                        {{--<select name="to_month" id="to_month" class="selects">--}}
+                            {{--<option value="">Select Month</option>--}}
+                            {{--@foreach($months as $month)--}}
+                                {{--<option value="{{ $month->id }}"--}}
+                                        {{--{{ old('to_month') == $month->id ? 'selected' : '' }}>--}}
+                                    {{--{{ $month->months }}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--</select>--}}
+                        {{--<drop-down-svg></drop-down-svg>--}}
+                    {{--</div>--}}
+            {{----}}
+                    {{--<div class="relative ml-3">--}}
+                        {{--<select name="to_year" id="to_year" class="selects">--}}
+                            {{--<option value="">Select Year</option>--}}
+                            {{--@for ($i = 2019; $i > 1980; $i--)--}}
+                                {{--<option value={{ $i }}--}}
+                                        {{--{{ old('to_year') == $i ? 'selected' : '' }}>--}}
+                                    {{--{{ $i }}--}}
+                                {{--</option>--}}
+                            {{--@endfor--}}
+                        {{--</select>--}}
+                        {{--<drop-down-svg></drop-down-svg>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+        {{----}}
+                {{--@error('to_month')--}}
+                {{--<p class="text-red text-xs italic">--}}
+                    {{--<strong>{{ $message }}</strong>--}}
+                {{--</p>--}}
+                {{--@enderror--}}
+            {{--</div>--}}
+    {{----}}
+            {{--<hr class="w-full border">--}}
+            {{----}}
+            {{--<div class="ml-auto mr-3 mb-3">--}}
+                {{--<input class="block px-3 py-4 block border rounded bg-transparent text-grey font-bold hover:bg-grey-lighter" type="button" value=" + Add Another">--}}
+            {{--</div>--}}
+        {{--</div>--}}
         
         <!-- Program Details -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">

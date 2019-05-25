@@ -111,7 +111,7 @@
     
         <!-- Submit -->
         <div class="flex flex-wrap -mx-3 mb-6 justify-center">
-            <a class="block px-3 py-4 block uppercase tracking-wide  rounded bg-grey text-white font-bold hover:bg-grey-dark mr-3 no-underline" href="{{ route('application.create') }}"> Previous </a>
+            <a class="block px-3 py-4 block uppercase tracking-wide  rounded bg-grey text-white font-bold hover:bg-grey-dark mr-3 no-underline" href="{{ route('application.show', ['application' => $application->id]) }}"> Previous </a>
             
             <a class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark no-underline" href="{{ route('payment.create', ['application' => $application->id]) }}">Next </a>
         </div>
