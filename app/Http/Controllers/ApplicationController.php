@@ -56,9 +56,13 @@ class ApplicationController extends Controller
      */
     public function store(ApplicationForm $form)
     {
-        dd($form->request);
+//        foreach(request()->education as $education){
+//            dd($education['institution']);
+//        }
 
         $application = $form->persist();
+
+        dd($application);
 
         return redirect()->route('document.create', ['application' => $application]);
     }

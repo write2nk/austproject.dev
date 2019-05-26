@@ -79,48 +79,51 @@ class ApplicationForm extends FormRequest
 
         $application_no = $year . $max_id;
 
-        DB::transaction(function() use ($application_no){
+        DB::transaction(function() use ($application_no) {
 
             $application_id = Application::create([
                 'application_no' => $application_no,
-                'applicant_id' => auth()->id()
+                'applicant_id'   => auth()->id()
             ])->id;
 
             AppPersonalDetails::create([
-                'application_id' => $application_id,
-                'last_name'  => $this->last_name,
-                'first_name'  => $this->first_name,
-                'middle_name'  => $this->middle_name,
-                'gender_id'  => $this->gender,
+                'application_id'     => $application_id,
+                'last_name'          => $this->last_name,
+                'first_name'         => $this->first_name,
+                'middle_name'        => $this->middle_name,
+                'gender_id'          => $this->gender,
                 'marital_status_id'  => $this->marital_status,
-                'date_of_birth'  => Carbon::create($this->date_of_birth),
-                'nationality_id'  => $this->nationality,
-                'state_of_origin_id'  => $this->state,
-                'disabled_id'  => $this->disability,
-                'disability'  => $this->disability_details
+                'date_of_birth'      => Carbon::create($this->date_of_birth),
+                'nationality_id'     => $this->nationality,
+                'state_of_origin_id' => $this->state,
+                'disabled_id'        => $this->disability,
+                'disability'         => $this->disability_details
             ]);
 
             AppContactDetails::create([
-                'application_id' => $application_id,
-                'email' => $this->email,
-                'phone' => $this->mobile_number,
-                'address' => $this->address,
+                'application_id'          => $application_id,
+                'email'                   => $this->email,
+                'phone'                   => $this->mobile_number,
+                'address'                 => $this->address,
                 'country_of_residence_id' => $this->country_of_residence,
-                'state_of_residence_id' => $this->state_of_residence,
-                'city' => $this->city,
-                'zip_code' => $this->zip_code,
+                'state_of_residence_id'   => $this->state_of_residence,
+                'city'                    => $this->city,
+                'zip_code'                => $this->zip_code,
             ]);
 
-            AppEducationHistory::create([
-                'application_id' => $application_id,
-                'institution' => $this->institution,
-                'degree_id' => $this->degree,
-                'course' => $this->course_of_study,
-                'start_month_id' => $this->from_month,
-                'start_year' => $this->from_year,
-                'graduation_month_id' => $this->to_month,
-                'graduation_year' => $this->to_year
-            ]);
+            foreach ($this->education as $education)
+            {
+                AppEducationHistory::create([
+                    'application_id'      => $application_id,
+                    'institution'         => $education['institution'],
+                    'degree_id'           => $education['degree'],
+                    'course'              => $education['course_of_study'],
+                    'start_month_id'      => $education['from_month'],
+                    'start_year'          => $education['from_year'],
+                    'graduation_month_id' => $education['to_month'],
+                    'graduation_year'     => $education['to_year']
+                ]);
+            }
 
             AppProgrameDetails::create([
                 'application_id' => $application_id,
@@ -128,14 +131,17 @@ class ApplicationForm extends FormRequest
                 'stream_id' => $this->stream,
             ]);
 
-            AppRefereeDetails::create([
-                'application_id' => $application_id,
-                'referee_title_id' => $this->referee_title,
-                'referee_name' => $this->referee_name,
-                'referee_email' => $this->referee_email,
-                'referee_phone' => $this->referee_phone,
-                'referee_affiliation' => $this->referee_affiliation
-            ]);
+            foreach($this->referee as $referee)
+            {
+                AppRefereeDetails::create([
+                    'application_id'      => $application_id,
+                    'referee_title_id'    => $referee['title'],
+                    'referee_name'        => $referee['name'],
+                    'referee_email'       => $referee['email'],
+                    'referee_phone'       => $referee['phone'],
+                    'referee_affiliation' => $referee['affiliation']
+                ]);
+            }
         }, 3);
 
         return Application::where('application_no', '=', $application_no)->first();
