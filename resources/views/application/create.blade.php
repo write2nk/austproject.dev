@@ -282,7 +282,7 @@
                         <option value="">Select Country of Residence</option>
                         @foreach($countries as $country)
                             <option value="{{ $country->id }}"
-                                    {{ old('coutnry_of_residence') == $country->id ? 'selected' : '' }}>
+                                    {{ old('country_of_residence') == $country->id ? 'selected' : '' }}>
                                 {{ $country->country }}
                             </option>
                         @endforeach
@@ -569,107 +569,110 @@
         </div>
         
         
-        <!-- Referee Information -->
+        <!-- Declaration -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
                 Referee Information
             </div>
-    
-            <!-- Title -->
-            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="referee_title" class="labels">
-                    Title <span class="text-red">*</span>
-                </label>
         
-                <div class="relative">
-                    <select selected="{{ old('referee_title') }}" name="referee_title" id="referee_title" class="selects">
-                        <option value="">Select Title</option>
-                        @foreach($titles as $title)
-                            <option value="{{ $title->id }}"
-                                    {{ old('title') == $title->id ? 'selected' : '' }}>
-                                {{ $title->title }} </option>
-                        @endforeach
-
-                    </select>
-                    <drop-down-svg></drop-down-svg>
+            @for($i = 0; $i < 2; $i++)
+                <div class="flex flex-wrap border rounded shadow m-3 pt-2">
+                    <!-- Title -->
+                    <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                        <label for="referee[{{ $i }}][title]" class="labels">
+                            Title <span class="text-red">*</span>
+                        </label>
+                    
+                        <div class="relative">
+                            <select name="referee[{{ $i }}][title]" class="selects">
+                                <option value="">Select Title</option>
+                                @foreach($titles as $title)
+                                    <option value="{{ $title->id }}"
+                                            {{ old("referee.{$i}.title") == $title->id ? 'selected' : '' }}>
+                                        {{ $title->title }} </option>
+                                @endforeach
+                        
+                            </select>
+                            <drop-down-svg></drop-down-svg>
+                        </div>
+                    
+                        @error("referee.{{ $i }}.title")
+                        <p class="text-red text-xs italic">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                        @enderror
+                    </div>
+                
+                    <!-- Fullname -->
+                    <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                        <label for="referee[{{ $i }}][name]" class="labels">
+                            Name <span class="text-red">*</span>
+                        </label>
+                    
+                        <input type="text" value="{{ old('referee.' . $i . '.name') }}" name="referee[{{ $i }}][name]" required class="inputs" placeholder="Full Name">
+                    
+                        @error("referee.{{ $i }}.name")
+                        <p class="text-red text-xs italic">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                        @enderror
+                    </div>
+                
+                    <!-- Email -->
+                    <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                        <label for="referee[{{ $i }}][email]" class="labels">
+                            Email <span class="text-red">*</span>
+                        </label>
+                    
+                        <input type="email" value="{{ old('referee.' . $i . '.email') }}" name="referee[{{ $i }}][email]" required class="inputs" placeholder="example@referee.com">
+                    
+                        @error("referee.{{ $i }}.email")
+                        <p class="text-red text-xs italic">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                        @enderror
+                    </div>
+                
+                    <!-- Phone Number -->
+                    <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                        <label for="referee[{{ $i }}][phone]" class="labels">
+                            Phone Number <span class="text-red">*</span>
+                        </label>
+                    
+                        <input type="text" value="{{ old('referee.' . $i . '.phone') }}" name="referee[{{ $i }}][phone]" required class="inputs" placeholder="+2347091234567">
+                    
+                        @error("referee.{{ $i }}.phone")
+                        <p class="text-red text-xs italic">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                        @enderror
+                    </div>
+                
+                    <!-- Affiliation -->
+                    <div class="w-full px-3 mb-4 md:mb-0">
+                        <label for="referee[{{ $i }}][affiliation]" class="labels">
+                            Institution/Organization <span class="text-red">*</span>
+                        </label>
+                    
+                        <input type="text" value="{{ old('referee.' . $i . '.affiliation') }}" name="referee[{{ $i }}][affiliation]" required class="inputs" placeholder="African University of Science and Technology">
+                    
+                        @error("referee.{{ $i }}.affiliation")
+                        <p class="text-red text-xs italic">
+                            <strong>{{ $message }}</strong>
+                        </p>
+                        @enderror
+                    </div>
+                
                 </div>
-        
-                @error('referee_title')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
+                @if($i == 0)
+                    <hr class="w-full border">
+                @endif
+            @endfor
     
-            <!-- Fullname -->
-            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="referee_name" class="labels">
-                    Name <span class="text-red">*</span>
-                </label>
-        
-                <input type="text" value="{{ old('referee_name') }}" name="referee_name" id="referee_name" required class="inputs" placeholder="Full Name">
-        
-                @error('referee_name')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- Email -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="referee_email" class="labels">
-                    Email <span class="text-red">*</span>
-                </label>
-        
-                <input type="email" value="{{ old('referee_email') }}" name="referee_email" id="referee_email" required class="inputs" placeholder="example@referee.com">
-        
-                @error('referee_email')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- Phone Number -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="referee_phone" class="labels">
-                    Phone Number <span class="text-red">*</span>
-                </label>
-        
-                <input type="text" value="{{ old('referee_phone') }}" name="referee_phone" id="referee_phone" required class="inputs" placeholder="+2347091234567">
-        
-                @error('referee_phone')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <!-- Affiliation -->
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="referee_affiliation" class="labels">
-                    Institution/Organization <span class="text-red">*</span>
-                </label>
-        
-                <input type="text" value="{{ old('referee_affiliation') }}" name="referee_affiliation" id="referee_affiliation" required class="inputs" placeholder="African University of Science and Technology">
-        
-                @error('referee_affiliation')
-                <p class="text-red text-xs italic">
-                    <strong>{{ $message }}</strong>
-                </p>
-                @enderror
-            </div>
-    
-            <hr class="w-full border">
-            
-            <div class="ml-auto mr-3 mb-3">
-                <input class="block px-3 py-4 block border rounded bg-transparent text-grey font-bold hover:bg-grey-lighter" type="button" value=" + Add Another">
-            </div>
         </div>
-        
-        
-        <!-- Declaration -->
+    
+    
+        <!-- Referee Information -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
                 Declaration
@@ -679,8 +682,8 @@
                 <input type="checkbox" value="{{ old('declaration') }}" name="declaration" id="declaration" value="" required>
             </div>
         </div>
-        
-        
+    
+    
         <!-- Submit -->
         <div class="flex flex-wrap -mx-3 mb-6 justify-center">
             <input class="block px-3 py-4 block uppercase tracking-wide  rounded bg-blue text-white font-bold hover:bg-blue-dark" type="submit" value="Next">

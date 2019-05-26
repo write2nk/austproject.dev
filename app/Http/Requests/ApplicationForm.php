@@ -31,6 +31,8 @@ class ApplicationForm extends FormRequest
      */
     public function rules()
     {
+//        dd($this->request);
+
         return [
             'last_name' => 'required',
             'first_name' => 'required',
@@ -49,20 +51,20 @@ class ApplicationForm extends FormRequest
             'state_of_residence' => 'required',
             'city' => 'required',
             'zip_code' => '',
-            'institution' => 'required',
-            'degree' => 'required',
-            'course_of_study' => 'required',
-            'from_month' => 'required',
-            'from_year' => 'required',
-            'to_month' => 'required',
-            'to_year' => 'required',
+            'education.*.institution' => 'required',
+            'education.*.degree' => 'required',
+            'education.*.course_of_study' => 'required',
+            'education.*.from_month' => 'required',
+            'education.*.from_year' => 'required',
+            'education.*.to_month' => 'required',
+            'education.*.to_year' => 'required',
             'program' => 'required',
             'stream' => 'required',
-            'referee_title' => 'required',
-            'referee_name' => 'required',
-            'referee_email' => 'required|email',
-            'referee_phone' => 'required',
-            'referee_affiliation' => 'required',
+            'referee.*.title' => 'required',
+            'referee.*.name' => 'required',
+            'referee.*.email' => 'required|email',
+            'referee.*.phone' => 'required',
+            'referee.*.affiliation' => 'required',
             'declaration' => ''
         ];
     }

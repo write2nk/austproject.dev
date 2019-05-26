@@ -4,74 +4,74 @@
             Educational History
         </div>
         
-        <div class="w-full flex flex-wrap border rounded shadow m-3 pt-2" v-for="(education, index) in educations" v-bind:key="index">
-            
-            <!-- Institution -->
-            <div class="w-full px-3 mb-4 md:mb-0">
-                <label for="institution" class="labels">
-                    Institution and Location <span class="text-red">*</span>
-                </label>
-                <input v-model="education.institution" type="text" name="institution" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
-            </div>
-            
-            <!-- Degree -->
-            <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                <label for="degree" class="labels">
-                    Degree <span class="text-red">*</span>
-                </label>
-        
-                <div class="relative">
-                    <select v-model="education.degree" name="degree" id="degree" class="selects">
-                        <option value="null">Select Degree</option>
-                        <option v-for="degree in degrees" value="degree.id">{{ degree.degree}} </option>
-                    </select>
-                    <drop-down-svg></drop-down-svg>
+        <div class="w-full" v-for="(education, index) in educations" v-bind:key="index">
+            <div class="flex flex-wrap border rounded shadow m-3 pt-2">
+                <!-- Institution -->
+                <div class="w-full px-3 mb-4 md:mb-0">
+                    <label for="institution" class="labels">
+                        Institution and Location <span class="text-red">*</span>
+                    </label>
+                    <input v-model="education.institution" type="text" name="institution[]" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
                 </div>
-            </div>
-    
-            <!-- Course of Study -->
-            <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                <label for="course_of_study" class="labels">
-                    Course of Study <span class="text-red">*</span>
-                </label>
-        
-                <input v-model="education.course_of_study" type="text" name="course_of_study" id="course_of_study" required class="inputs" placeholder="Computer Science">
-            </div>
-    
-            <!-- From -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="from_month" class="labels">
-                    Start Date <span class="text-red">*</span>
-                </label>
-        
-                <div class="flex">
+                
+                <!-- Degree -->
+                <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
+                    <label for="degree" class="labels">
+                        Degree <span class="text-red">*</span>
+                    </label>
+            
                     <div class="relative">
-                        <select v-model="education.from_month" name="from_month" id="from_month" class="selects">
-                            <option value="null">Select Month</option>
-                            <option v-for="(month, index) in months" :value="index + 1">{{ month }}</option>
-                        </select>
-                        <drop-down-svg></drop-down-svg>
-                    </div>
-            
-                    <div class="relative ml-3">
-                        <select v-model="education.from_year" name="from_year" id="from_year" class="selects">
-                            <option value="null">Select Year</option>
-                            <option v-for="year in years" value="year"> {{ year }} </option>
+                        <select v-model="education.degree" name="degree[]" id="degree" class="selects">
+                            <option value="null">Select Degree</option>
+                            <option v-for="degree in degrees" :value="degree.id">{{ degree.degree}} </option>
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
                 </div>
-            </div>
-    
-            <!-- To -->
-            <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+        
+                <!-- Course of Study -->
+                <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
+                    <label for="course_of_study" class="labels">
+                        Course of Study <span class="text-red">*</span>
+                    </label>
+            
+                    <input v-model="education.course_of_study" type="text" name="course_of_study[]" id="course_of_study" required class="inputs" placeholder="Computer Science">
+                </div>
+        
+                <!-- From -->
+                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
+                    <label for="from_month" class="labels">
+                        Start Date <span class="text-red">*</span>
+                    </label>
+            
+                    <div class="flex">
+                        <div class="relative">
+                            <select v-model="education.from_month" name="from_month[]" id="from_month" class="selects">
+                                <option value="null">Select Month</option>
+                                <option v-for="(month, index) in months" :value="index + 1">{{ month }}</option>
+                            </select>
+                            <drop-down-svg></drop-down-svg>
+                        </div>
+                
+                        <div class="relative ml-3">
+                            <select v-model="education.from_year" name="from_year[]" id="from_year" class="selects">
+                                <option value="null">Select Year</option>
+                                <option v-for="year in years" :value="year"> {{ year }} </option>
+                            </select>
+                            <drop-down-svg></drop-down-svg>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- To -->
+                <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                 <label for="to_month" class="labels">
                     Graduation Date <span class="text-red">*</span>
                 </label>
         
                 <div class="flex">
                     <div class="relative">
-                        <select v-model="education.to_month" name="to_month" id="to_month" class="selects">
+                        <select v-model="education.to_month" name="to_month[]" id="to_month" class="selects">
                             <option value="null">Select Month</option>
                             <option v-for="(month, index) in months" :value="index + 1">{{ month }}</option>
                         </select>
@@ -79,18 +79,19 @@
                     </div>
             
                     <div class="relative ml-3">
-                        <select v-model="education.to_year" name="to_year" id="to_year" class="selects">
+                        <select v-model="education.to_year" name="to_year[]" id="to_year" class="selects">
                             <option value="null">Select Year</option>
-                            <option v-for="year in years" value="year"> {{ year }} </option>
+                            <option v-for="year in years" :value="year"> {{ year }} </option>
                         </select>
                         <drop-down-svg></drop-down-svg>
                     </div>
                 </div>
             </div>
+            </div>
             
+            <hr class="w-full border">
         </div>
         
-        <hr class="w-full border">
         
         <div class="flex ml-auto mr-3 mb-3">
             <input class="block px-3 py-2 block border bg-grey-lighter rounded text-grey-dark font-bold hover:bg-red-lighter" type="button" value=" - Remove " @click="remove">
@@ -115,14 +116,12 @@
             }
         },
         computed:{
-            years: () => {
-                return Array(50).fill(2019).map((x, y) => x - y)
-            },
+            years: () => { return Array(50).fill(2019).map((x, y) => x - y) },
         },
         
         methods:{
             add(){
-                let empty = this.educations.filter(education => education.course_of_study == null);
+                let empty = this.educations.filter(education => education.course_of_study === null || education.institution === null || education.degree === null);
                 
                 if(empty.length >= 1 && this.educations.length > 0) return;
                 
@@ -138,8 +137,7 @@
             },
             
             remove(){
-                console.log("Here");
-                if(! this.educations.length <= 1) this.educations.splice(-1).pop();
+                if(this.educations.length > 1) this.educations.pop();
             }
         },
         
