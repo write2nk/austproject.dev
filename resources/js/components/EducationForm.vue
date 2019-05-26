@@ -8,20 +8,20 @@
             <div class="flex flex-wrap border rounded shadow m-3 pt-2">
                 <!-- Institution -->
                 <div class="w-full px-3 mb-4 md:mb-0">
-                    <label for="institution" class="labels">
+                    <label :for="`education[${index}][institution]`" class="labels">
                         Institution and Location <span class="text-red">*</span>
                     </label>
-                    <input v-model="education.institution" type="text" name="institution[]" id="institution" required class="inputs" placeholder="African University of Science and Technology, Abuja">
+                    <input v-model="education.institution" type="text" :name="`education[${index}][institution]`" required class="inputs" placeholder="African University of Science and Technology, Abuja">
                 </div>
                 
                 <!-- Degree -->
                 <div class="w-full md:w-1/3 px-3 mb-4 md:mb-0">
-                    <label for="degree" class="labels">
+                    <label :for="`education[${index}][degree]`" class="labels">
                         Degree <span class="text-red">*</span>
                     </label>
             
                     <div class="relative">
-                        <select v-model="education.degree" name="degree[]" id="degree" class="selects">
+                        <select v-model="education.degree" :name="`education[${index}][degree]`" class="selects">
                             <option value="null">Select Degree</option>
                             <option v-for="degree in degrees" :value="degree.id">{{ degree.degree}} </option>
                         </select>
@@ -31,22 +31,22 @@
         
                 <!-- Course of Study -->
                 <div class="w-full md:w-2/3 px-3 mb-4 md:mb-0">
-                    <label for="course_of_study" class="labels">
+                    <label :for="`education[${index}][course_of_study]`" class="labels">
                         Course of Study <span class="text-red">*</span>
                     </label>
             
-                    <input v-model="education.course_of_study" type="text" name="course_of_study[]" id="course_of_study" required class="inputs" placeholder="Computer Science">
+                    <input v-model="education.course_of_study" type="text" :name="`education[${index}][course_of_study]`" required class="inputs" placeholder="Computer Science">
                 </div>
         
                 <!-- From -->
                 <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                    <label for="from_month" class="labels">
+                    <label :for="`education[${index}][from_month]`" class="labels">
                         Start Date <span class="text-red">*</span>
                     </label>
             
                     <div class="flex">
                         <div class="relative">
-                            <select v-model="education.from_month" name="from_month[]" id="from_month" class="selects">
+                            <select v-model="education.from_month" :name="`education[${index}][from_month]`" class="selects">
                                 <option value="null">Select Month</option>
                                 <option v-for="(month, index) in months" :value="index + 1">{{ month }}</option>
                             </select>
@@ -54,7 +54,7 @@
                         </div>
                 
                         <div class="relative ml-3">
-                            <select v-model="education.from_year" name="from_year[]" id="from_year" class="selects">
+                            <select v-model="education.from_year" :name="`education[${index}][from_year]`" class="selects">
                                 <option value="null">Select Year</option>
                                 <option v-for="year in years" :value="year"> {{ year }} </option>
                             </select>
@@ -65,13 +65,13 @@
         
                 <!-- To -->
                 <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                <label for="to_month" class="labels">
+                <label :for="`education[${index}][to_month]`" class="labels">
                     Graduation Date <span class="text-red">*</span>
                 </label>
         
                 <div class="flex">
                     <div class="relative">
-                        <select v-model="education.to_month" name="to_month[]" id="to_month" class="selects">
+                        <select v-model="education.to_month" :name="`education[${index}][to_month]`" class="selects">
                             <option value="null">Select Month</option>
                             <option v-for="(month, index) in months" :value="index + 1">{{ month }}</option>
                         </select>
@@ -79,7 +79,7 @@
                     </div>
             
                     <div class="relative ml-3">
-                        <select v-model="education.to_year" name="to_year[]" id="to_year" class="selects">
+                        <select v-model="education.to_year" :name="`education[${index}][to_year]`" class="selects">
                             <option value="null">Select Year</option>
                             <option v-for="year in years" :value="year"> {{ year }} </option>
                         </select>

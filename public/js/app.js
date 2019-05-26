@@ -2511,7 +2511,17 @@ var render = function() {
             { staticClass: "flex flex-wrap border rounded shadow m-3 pt-2" },
             [
               _c("div", { staticClass: "w-full px-3 mb-4 md:mb-0" }, [
-                _vm._m(0, true),
+                _c(
+                  "label",
+                  {
+                    staticClass: "labels",
+                    attrs: { for: "education[" + index + "][institution]" }
+                  },
+                  [
+                    _vm._v("\n                    Institution and Location "),
+                    _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+                  ]
+                ),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -2525,8 +2535,7 @@ var render = function() {
                   staticClass: "inputs",
                   attrs: {
                     type: "text",
-                    name: "institution[]",
-                    id: "institution",
+                    name: "education[" + index + "][institution]",
                     required: "",
                     placeholder:
                       "African University of Science and Technology, Abuja"
@@ -2544,7 +2553,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "w-full md:w-1/3 px-3 mb-4 md:mb-0" }, [
-                _vm._m(1, true),
+                _c(
+                  "label",
+                  {
+                    staticClass: "labels",
+                    attrs: { for: "education[" + index + "][degree]" }
+                  },
+                  [
+                    _vm._v("\n                    Degree "),
+                    _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -2562,7 +2581,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "selects",
-                        attrs: { name: "degree[]", id: "degree" },
+                        attrs: { name: "education[" + index + "][degree]" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
@@ -2606,7 +2625,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "w-full md:w-2/3 px-3 mb-4 md:mb-0" }, [
-                _vm._m(2, true),
+                _c(
+                  "label",
+                  {
+                    staticClass: "labels",
+                    attrs: { for: "education[" + index + "][course_of_study]" }
+                  },
+                  [
+                    _vm._v("\n                    Course of Study "),
+                    _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+                  ]
+                ),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -2620,8 +2649,7 @@ var render = function() {
                   staticClass: "inputs",
                   attrs: {
                     type: "text",
-                    name: "course_of_study[]",
-                    id: "course_of_study",
+                    name: "education[" + index + "][course_of_study]",
                     required: "",
                     placeholder: "Computer Science"
                   },
@@ -2642,7 +2670,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
-                _vm._m(3, true),
+                _c(
+                  "label",
+                  {
+                    staticClass: "labels",
+                    attrs: { for: "education[" + index + "][from_month]" }
+                  },
+                  [
+                    _vm._v("\n                    Start Date "),
+                    _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex" }, [
                   _c(
@@ -2661,7 +2699,9 @@ var render = function() {
                             }
                           ],
                           staticClass: "selects",
-                          attrs: { name: "from_month[]", id: "from_month" },
+                          attrs: {
+                            name: "education[" + index + "][from_month]"
+                          },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -2719,7 +2759,9 @@ var render = function() {
                             }
                           ],
                           staticClass: "selects",
-                          attrs: { name: "from_year[]", id: "from_year" },
+                          attrs: {
+                            name: "education[" + index + "][from_year]"
+                          },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -2762,7 +2804,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
-                _vm._m(4, true),
+                _c(
+                  "label",
+                  {
+                    staticClass: "labels",
+                    attrs: { for: "education[" + index + "][to_month]" }
+                  },
+                  [
+                    _vm._v("\n                Graduation Date "),
+                    _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "flex" }, [
                   _c(
@@ -2781,7 +2833,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "selects",
-                          attrs: { name: "to_month[]", id: "to_month" },
+                          attrs: { name: "education[" + index + "][to_month]" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -2839,7 +2891,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "selects",
-                          attrs: { name: "to_year[]", id: "to_year" },
+                          attrs: { name: "education[" + index + "][to_year]" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -2906,65 +2958,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "labels", attrs: { for: "institution" } },
-      [
-        _vm._v("\n                    Institution and Location "),
-        _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "labels", attrs: { for: "degree" } }, [
-      _vm._v("\n                    Degree "),
-      _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "labels", attrs: { for: "course_of_study" } },
-      [
-        _vm._v("\n                    Course of Study "),
-        _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "labels", attrs: { for: "from_month" } },
-      [
-        _vm._v("\n                    Start Date "),
-        _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "labels", attrs: { for: "to_month" } }, [
-      _vm._v("\n                Graduation Date "),
-      _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
