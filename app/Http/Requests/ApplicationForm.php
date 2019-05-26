@@ -31,8 +31,6 @@ class ApplicationForm extends FormRequest
      */
     public function rules()
     {
-//        dd($this->request);
-
         return [
             'last_name' => 'required',
             'first_name' => 'required',
@@ -163,38 +161,46 @@ class ApplicationForm extends FormRequest
                 'disability'  => $this->disability_details
             ]);
 
-        $application->contact->update([
-            'email' => $this->email,
-            'phone' => $this->mobile_number,
-            'address' => $this->address,
-            'country_of_residence_id' => $this->country_of_residence,
-            'state_of_residence_id' => $this->state_of_residence,
-            'city' => $this->city,
-            'zip_code' => $this->zip_code,
-        ]);
+            $application->contact->update([
+                'email' => $this->email,
+                'phone' => $this->mobile_number,
+                'address' => $this->address,
+                'country_of_residence_id' => $this->country_of_residence,
+                'state_of_residence_id' => $this->state_of_residence,
+                'city' => $this->city,
+                'zip_code' => $this->zip_code,
+            ]);
 
-//        $application->education->update([
-//            'institution' => $this->institution,
-//            'degree_id' => $this->degree,
-//            'course' => $this->course_of_study,
-//            'start_month_id' => $this->from_month,
-//            'start_year' => $this->from_year,
-//            'graduation_month_id' => $this->to_month,
-//            'graduation_year' => $this->to_year
-//        ]);
+            foreach ($this->education as $education)
+            {
+                AppEducationHistory::where('id', $education['edu'])
+                    ->update([
+                        'institution' => $education['institution'],
+                        'degree_id' => $education['degree'],
+                        'course' => $education['course_of_study'],
+                        'start_month_id' => $education['from_month'],
+                        'start_year' => $education['from_year'],
+                        'graduation_month_id' => $education['to_month'],
+                        'graduation_year' => $education['to_year']
+                    ]);
+            }
 
-        $application->program->update([
-            'program_id' => $this->program,
-            'stream_id' => $this->stream,
-        ]);
+            $application->program->update([
+                'program_id' => $this->program,
+                'stream_id' => $this->stream,
+            ]);
 
-//        $application->referee->update([
-//            'referee_title_id' => $this->referee_title,
-//            'referee_name' => $this->referee_name,
-//            'referee_email' => $this->referee_email,
-//            'referee_phone' => $this->referee_phone,
-//            'referee_affiliation' => $this->referee_affiliation
-//        ]);
-    }, 3);
+            foreach($this->referee as $referee)
+            {
+                AppRefereeDetails::where('id', $referee['ref'])
+                    ->update([
+                        'referee_title_id' => $referee['title'],
+                        'referee_name' => $referee['name'],
+                        'referee_email' => $referee['email'],
+                        'referee_phone' => $referee['phone'],
+                        'referee_affiliation' => $referee['affiliation']
+                    ]);
+            }
+        }, 3);
     }
 }

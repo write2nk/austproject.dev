@@ -569,7 +569,7 @@
         </div>
         
         
-        <!-- Declaration -->
+        <!-- Referee Information -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
                 Referee Information
@@ -672,7 +672,7 @@
         </div>
     
     
-        <!-- Referee Information -->
+        <!-- Declaration -->
         <div class="flex flex-wrap -mx-3 mb-6 border rounded">
             <div class="section-head">
                 Declaration
