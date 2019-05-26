@@ -1877,42 +1877,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EducationForm",
   components: {
     DropDownSvg: _DropDownSvg__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: ['degree_list'],
   data: function data() {
     return {
       educations: [],
-      degrees: [{
-        label: 'Bachelor',
-        value: 1
-      }, {
-        label: 'Master',
-        value: 2
-      }],
-      months: [{
-        label: 'January',
-        value: 1
-      }, {
-        label: 'February',
-        value: 2
-      }],
-      years: [{
-        label: '2017',
-        value: 2017
-      }, {
-        label: '2018',
-        value: 2018
-      }]
+      degrees: this.degree_list,
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     };
+  },
+  computed: {
+    years: function years() {
+      return Array(50).fill(2019).map(function (x, y) {
+        return x - y;
+      });
+    }
   },
   methods: {
     add: function add() {
-      var empty = this.educations.length < 1;
-      if (!empty) return;
+      var empty = this.educations.filter(function (education) {
+        return education.course_of_study == null;
+      });
+      if (empty.length >= 1 && this.educations.length > 0) return;
       this.educations.push({
         institution: null,
         degree: null,
@@ -1923,7 +1922,10 @@ __webpack_require__.r(__webpack_exports__);
         to_year: null
       });
     },
-    remove: function remove() {}
+    remove: function remove() {
+      console.log("Here");
+      if (!this.educations.length <= 1) this.educations.splice(-1).pop();
+    }
   },
   mounted: function mounted() {
     this.add();
@@ -2522,183 +2524,398 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm._l(_vm.educations, function(education, index) {
-        return _c("div", { key: index, staticClass: "w-full" }, [
-          _vm._m(0, true),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-full md:w-1/3 px-3 mb-4 md:mb-0" }, [
-            _vm._m(1, true),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "relative" },
-              [
-                _c(
-                  "select",
+        return _c(
+          "div",
+          {
+            key: index,
+            staticClass: "w-full flex flex-wrap border rounded shadow m-3 pt-2"
+          },
+          [
+            _c("div", { staticClass: "w-full px-3 mb-4 md:mb-0" }, [
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
                   {
-                    staticClass: "selects",
-                    attrs: { name: "degree", id: "degree" }
-                  },
+                    name: "model",
+                    rawName: "v-model",
+                    value: education.institution,
+                    expression: "education.institution"
+                  }
+                ],
+                staticClass: "inputs",
+                attrs: {
+                  type: "text",
+                  name: "institution",
+                  id: "institution",
+                  required: "",
+                  placeholder:
+                    "African University of Science and Technology, Abuja"
+                },
+                domProps: { value: education.institution },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(education, "institution", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full md:w-1/3 px-3 mb-4 md:mb-0" }, [
+              _vm._m(1, true),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "relative" },
+                [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: education.degree,
+                          expression: "education.degree"
+                        }
+                      ],
+                      staticClass: "selects",
+                      attrs: { name: "degree", id: "degree" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            education,
+                            "degree",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "null" } }, [
+                        _vm._v("Select Degree")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(_vm.degrees, function(degree) {
+                        return _c("option", { attrs: { value: "degree.id" } }, [
+                          _vm._v(_vm._s(degree.degree) + " ")
+                        ])
+                      })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("drop-down-svg")
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full md:w-2/3 px-3 mb-4 md:mb-0" }, [
+              _vm._m(2, true),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: education.course_of_study,
+                    expression: "education.course_of_study"
+                  }
+                ],
+                staticClass: "inputs",
+                attrs: {
+                  type: "text",
+                  name: "course_of_study",
+                  id: "course_of_study",
+                  required: "",
+                  placeholder: "Computer Science"
+                },
+                domProps: { value: education.course_of_study },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(education, "course_of_study", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
+              _vm._m(3, true),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex" }, [
+                _c(
+                  "div",
+                  { staticClass: "relative" },
                   [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Select Degree")
-                    ]),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: education.from_month,
+                            expression: "education.from_month"
+                          }
+                        ],
+                        staticClass: "selects",
+                        attrs: { name: "from_month", id: "from_month" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              education,
+                              "from_month",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "null" } }, [
+                          _vm._v("Select Month")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.months, function(month, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: index + 1 } },
+                            [_vm._v(_vm._s(month))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
                     _vm._v(" "),
-                    _vm._l(_vm.degrees, function(degree) {
-                      return _c(
-                        "option",
-                        { attrs: { value: "degree.value" } },
-                        [_vm._v(_vm._s(degree.label) + " ")]
-                      )
-                    })
+                    _c("drop-down-svg")
                   ],
-                  2
+                  1
                 ),
                 _vm._v(" "),
-                _c("drop-down-svg")
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _vm._m(2, true),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
-            _vm._m(3, true),
+                _c(
+                  "div",
+                  { staticClass: "relative ml-3" },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: education.from_year,
+                            expression: "education.from_year"
+                          }
+                        ],
+                        staticClass: "selects",
+                        attrs: { name: "from_year", id: "from_year" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              education,
+                              "from_year",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "null" } }, [
+                          _vm._v("Select Year")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.years, function(year) {
+                          return _c("option", { attrs: { value: "year" } }, [
+                            _vm._v(" " + _vm._s(year) + " ")
+                          ])
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("drop-down-svg")
+                  ],
+                  1
+                )
+              ])
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "flex" }, [
-              _c(
-                "div",
-                { staticClass: "relative" },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "selects",
-                      attrs: { name: "from_month", id: "from_month" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Month")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.months, function(month) {
-                        return _c(
-                          "option",
-                          { attrs: { value: "month.value" } },
-                          [_vm._v(_vm._s(month.label))]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("drop-down-svg")
-                ],
-                1
-              ),
+            _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
+              _vm._m(4, true),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "relative ml-3" },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "selects",
-                      attrs: { name: "from_year", id: "from_year" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Year")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.years, function(year) {
-                        return _c(
-                          "option",
-                          { attrs: { value: "year.value" } },
-                          [_vm._v(" " + _vm._s(year.label) + " ")]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("drop-down-svg")
-                ],
-                1
-              )
+              _c("div", { staticClass: "flex" }, [
+                _c(
+                  "div",
+                  { staticClass: "relative" },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: education.to_month,
+                            expression: "education.to_month"
+                          }
+                        ],
+                        staticClass: "selects",
+                        attrs: { name: "to_month", id: "to_month" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              education,
+                              "to_month",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "null" } }, [
+                          _vm._v("Select Month")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.months, function(month, index) {
+                          return _c(
+                            "option",
+                            { domProps: { value: index + 1 } },
+                            [_vm._v(_vm._s(month))]
+                          )
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("drop-down-svg")
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "relative ml-3" },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: education.to_year,
+                            expression: "education.to_year"
+                          }
+                        ],
+                        staticClass: "selects",
+                        attrs: { name: "to_year", id: "to_year" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              education,
+                              "to_year",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "null" } }, [
+                          _vm._v("Select Year")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.years, function(year) {
+                          return _c("option", { attrs: { value: "year" } }, [
+                            _vm._v(" " + _vm._s(year) + " ")
+                          ])
+                        })
+                      ],
+                      2
+                    ),
+                    _vm._v(" "),
+                    _c("drop-down-svg")
+                  ],
+                  1
+                )
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-full md:w-1/2 px-3 mb-4 md:mb-0" }, [
-            _vm._m(4, true),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex" }, [
-              _c(
-                "div",
-                { staticClass: "relative" },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "selects",
-                      attrs: { name: "to_month", id: "to_month" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Month")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.months, function(month) {
-                        return _c(
-                          "option",
-                          { attrs: { value: "month.value" } },
-                          [_vm._v(_vm._s(month.label))]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("drop-down-svg")
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "relative ml-3" },
-                [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "selects",
-                      attrs: { name: "to_year", id: "to_year" }
-                    },
-                    [
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Year")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.years, function(year) {
-                        return _c(
-                          "option",
-                          { attrs: { value: "year.value" } },
-                          [_vm._v(" " + _vm._s(year.label) + " ")]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("drop-down-svg")
-                ],
-                1
-              )
-            ])
-          ])
-        ])
-      })
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c("hr", { staticClass: "w-full border" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex ml-auto mr-3 mb-3" }, [
+        _c("input", {
+          staticClass:
+            "block px-3 py-2 block border bg-grey-lighter rounded text-grey-dark font-bold hover:bg-red-lighter",
+          attrs: { type: "button", value: " - Remove " },
+          on: { click: _vm.remove }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass:
+            "block px-3 py-2 block border bg-grey-lighter rounded text-blue font-bold hover:bg-blue-lighter ml-3",
+          attrs: { type: "button", value: " + Add " },
+          on: { click: _vm.add }
+        })
+      ])
     ],
     2
   )
@@ -2708,23 +2925,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full px-3 mb-4 md:mb-0" }, [
-      _c("label", { staticClass: "labels", attrs: { for: "institution" } }, [
+    return _c(
+      "label",
+      { staticClass: "labels", attrs: { for: "institution" } },
+      [
         _vm._v("\n                Institution and Location "),
         _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "inputs",
-        attrs: {
-          type: "text",
-          name: "institution",
-          id: "institution",
-          required: "",
-          placeholder: "African University of Science and Technology, Abuja"
-        }
-      })
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -2739,27 +2947,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full md:w-2/3 px-3 mb-4 md:mb-0" }, [
-      _c(
-        "label",
-        { staticClass: "labels", attrs: { for: "course_of_study" } },
-        [
-          _vm._v("\n                Course of Study "),
-          _c("span", { staticClass: "text-red" }, [_vm._v("*")])
-        ]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "inputs",
-        attrs: {
-          type: "text",
-          name: "course_of_study",
-          id: "course_of_study",
-          required: "",
-          placeholder: "Computer Science"
-        }
-      })
-    ])
+    return _c(
+      "label",
+      { staticClass: "labels", attrs: { for: "course_of_study" } },
+      [
+        _vm._v("\n                Course of Study "),
+        _c("span", { staticClass: "text-red" }, [_vm._v("*")])
+      ]
+    )
   },
   function() {
     var _vm = this
